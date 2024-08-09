@@ -1,7 +1,20 @@
+import { useState, useEffect } from 'react'
 import classes from './home.module.css'
 import logo from '../assets/present-logo.svg'
 
 export default function Home() {
+
+    const [content, setContent] = useState([])
+
+    useEffect(() => {
+        fetch('https://present-cms.payloadcms.app/api/globals/landing-page?locale=undefined&draft=false&depth=1')
+            .then(response => response.json())
+            .then(data => {
+                setContent(data)
+                console.log(data)
+            })
+            .catch(error => console.error(error));
+    })
 
     return (
         <>
@@ -10,10 +23,8 @@ export default function Home() {
             </div>
             <div className={`${classes.screenHeightContainer} ${classes.flexCenter}`}>
                 <div className={`${classes.headerContainer} ${classes.flexCenter}`}>
-                    <h1>
-                        The future of experience and entertainment
-                    </h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h1>{content.Headline}</h1>
+                    <p>{content.HeadlineSubtitle}</p>
                 </div>
             </div>
         </>

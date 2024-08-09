@@ -1,9 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { GlobalCanvas, SmoothScrollbar } from '@14islands/r3f-scroll-rig'
-import { Router, Link, Route, Routes } from "react-router-dom";
+import { Router, Route, Routes } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 import Home from './home/Home'
@@ -12,7 +10,6 @@ const history = createBrowserHistory({ window });
 
 export default function App() {
   const eventSource = useRef(null);
-  const [count, setCount] = useState(0)
 
   return (
     <div ref={eventSource} className="page-container">
