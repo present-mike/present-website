@@ -26,4 +26,6 @@
     box-sizing: border-box;
     padding: 165px 64px;
     height: auto;
+
+    z-index: 2;
 }
