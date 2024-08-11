@@ -6,15 +6,15 @@ export default function Home() {
 
     const [content, setContent] = useState([]);
 
-    // useEffect(() => {
-        // fetch('https://present-cms.payloadcms.app/api/globals/landing-page?locale=undefined&draft=false&depth=1')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         setContent(data)
-        //         console.log(data)
-        //     })
-        //     .catch(error => console.error(error));
-    // });
+    useEffect(() => {
+        fetch('https://present-cms.payloadcms.app/api/globals/landing-page?locale=undefined&draft=false&depth=1')
+            .then(response => response.json())
+            .then(data => {
+                setContent(data)
+                console.log(data)
+            })
+            .catch(error => console.error(error));
+    }, []);
 
     return (
         <>
