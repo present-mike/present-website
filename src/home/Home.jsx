@@ -3,7 +3,6 @@ import classes from './home.module.css'
 import HeroSection from "../shaders/HeroSection";
 
 export default function Home() {
-
     const [content, setContent] = useState([]);
 
     useEffect(() => {
@@ -11,14 +10,14 @@ export default function Home() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                console.log(data)
+                // console.log(data)
             })
             .catch(error => console.error(error));
     }, []);
 
     return (
         <>
-            <HeroSection />
+            <HeroSection src={'placeholder-hero.mp4'}/>
 
             <div className={`${classes.screenHeightContainer} ${classes.flexCenter}`}>
                 <div className={`${classes.headerContainer} ${classes.flexCenter}`}>

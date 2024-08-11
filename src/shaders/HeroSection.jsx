@@ -3,24 +3,20 @@ import { UseCanvas, ScrollScene } from '@14islands/r3f-scroll-rig';
 import classes from '../home/home.module.css';
 import logo from '../assets/present-logo.svg'
 
-import HeroMaterial from "./HeroMaterial";
-import { extend } from '@react-three/fiber';
-extend({ HeroMaterial });
+import HeroQuad from './HeroQuad';
 
-export default function HeroSection() {
+export default function HeroSection({ src, poster }) {
     const el = useRef();
     return (
         <>
             <div ref={el} className={`${classes.screenHeightContainer} ${classes.flexDown}`}>
                 <img className={classes.logo} src={logo} alt="logo" />
             </div>
+
             <UseCanvas>
                 <ScrollScene track={el}>
                     {(props) => (
-                        <mesh {...props}>
-                            <planeGeometry />
-                            <heroMaterial key={HeroMaterial.key} />
-                        </mesh>
+                        <HeroQuad src={src} {...props} />
                     )}
                 </ScrollScene>
             </UseCanvas>
