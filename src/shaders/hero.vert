@@ -1,3 +1,4 @@
+uniform float time;
 uniform vec3 uColor;
 uniform float uAlpha;
 
