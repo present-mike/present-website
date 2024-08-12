@@ -10,6 +10,7 @@ export default function HeroQuad ({ src, ...props }) {
     const viewport = useThree((state) => state.viewport);
     const videoTexture = useVideoTexture(src);
     const tex = useTexture('placeholder-hero.png');
+    const noiseTexture = useTexture('noise.jpg');
 
     // const videoTexture = useMemo(() => {
     //     return new THREE.VideoTexture(src)
@@ -25,6 +26,7 @@ export default function HeroQuad ({ src, ...props }) {
                 <heroMaterial
                     key={HeroMaterial.key}
                     tMap={videoTexture}
+                    tNoise={noiseTexture}
                     resolution={[ viewport.width, viewport.height ]}
                 />
             </Suspense>
