@@ -5,7 +5,7 @@ import { extend, useFrame, useThree } from '@react-three/fiber';
 import { Suspense, useRef } from "react";
 extend({ HeroMaterial });
 
-export default function HeroQuad ({ src, ...props }) {
+export default function HeroQuad({ src, ...props }) {
 
     const shaderRef = useRef();
     const viewport = useThree((state) => state.viewport);
@@ -18,7 +18,9 @@ export default function HeroQuad ({ src, ...props }) {
     //     return new THREE.VideoTexture(src)
     // }, []);
 
+    // const h = window.innerHeight / 2
     useFrame(({ clock }) => {
+        // const position = window.scrollY / h;
         shaderRef.current.uniforms.time.value = clock.getElapsedTime();
     });
 
@@ -34,7 +36,7 @@ export default function HeroQuad ({ src, ...props }) {
                     tMap={videoTexture}
                     tNoise={noiseTexture}
                     time={0}
-                    resolution={[ viewport.width, viewport.height ]}
+                    resolution={[viewport.width, viewport.height]}
                 />
             </Suspense>
 

@@ -1,0 +1,38 @@
+.heroHeader {
+    max-width: 75rem;
+}
+
+.listContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.listItem {
+    box-sizing: border-box;
+}
+
+.listItem:nth-child(-n+2) {
+    border-bottom: 1px solid black;
+    padding-bottom: 2.875rem;
+}
+
+.listItem:nth-child(odd) {
+    border-right: 1px solid black;
+    padding-right: 12%;
+}
+
+.listItem:nth-child(n+3) {
+    padding-top: 2.875rem;
+}
+
+.listItem:nth-child(even) {
+    padding-left: 12%;
+}
+
+.dot {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: black;
+    margin-bottom: 2.813rem;
+}
