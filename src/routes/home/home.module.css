@@ -35,6 +35,10 @@
     top: 0;
 }
 
+.noTouch {
+    pointer-events: none;
+}
+
 .dataMoshContainer {
     position: relative;
 }

@@ -1,0 +1,46 @@
+.infoSection {
+    padding: 2.25rem 4rem;
+}
+
+.subtitle {
+    max-width: 56rem;
+    width: 100%;
+}
+
+.subtitleContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-top: 5.375rem;
+    padding-bottom: 7.188rem;
+}
+
+.rightItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.938rem;
+    margin-bottom: 2.188rem;
+}
+
+.leftItem {
+    margin-bottom: 1.25rem;
+    max-width: 24rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.leftItem img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.leftItem p {
+    font-size: 1.25rem;
+}
+
+.leftItem a {
+    font-size: 1.25rem;
+    text-transform: Capitalize;
+}

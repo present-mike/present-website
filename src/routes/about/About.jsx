@@ -22,7 +22,7 @@ export default function About() {
                 <>
                     <div className="section">
                         <div className='headerContainer'>
-                            <h2 className={classes.heroHeader}>{content.Headline}</h2>
+                            <h2 className='heroHeader'>{content.Headline}</h2>
                             <img src={content.HeaderImage.url} className={classes.heroSubtitle} key={content.HeaderImage.url} />
                         </div>
                     </div>

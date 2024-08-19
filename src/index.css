@@ -16,6 +16,12 @@
   src: url(./assets/fonts/NeueHaasUnicaW1G-Regular.otf);
 }
 
+@font-face {
+  font-family: "Neue Haas Unica";
+  font-weight: 700;
+  src: url(./assets/fonts/NeueHaasUnicaW1G-Black.otf);
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -53,6 +59,7 @@ h3 {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 2.5rem;
+  line-height: 142.5%;
   margin: 0;
 }
 
@@ -60,11 +67,31 @@ h4 {
   font-family: Neue Haas Unica;
   text-transform: uppercase;
   font-weight: 400;
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+h5 {
+  font-family: Neue Haas Unica;
+  text-transform: uppercase;
+  font-weight: 400;
   font-size: 1.25rem;
   margin: 0;
 }
 
+h6 {
+  font-family: Neue Haas Unica;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7B7B7B;
+  text-transform: uppercase;
+  margin: 0;
+}
+
 p {
+  font-family: Neue Haas Unica;
+  font-size: 1.75rem;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -92,12 +119,17 @@ body {
 
 .section {
   padding: 3.75rem;
+  max-width: 100rem;
 }
 
 .headerContainer {
   display: flex;
   flex-direction: column;
   gap: 7.188rem;
+}
+
+.heroHeader {
+  max-width: 75rem;
 }
 
 button {
@@ -119,4 +151,23 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.galleryContainer {
+  height: 25rem;
+  margin-bottom: 4rem;
+  overflow-x: auto;
+}
+
+.imgBox {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+}
+
+.imgBox img {
+  height: 100%;
+  width: auto;
+  padding-right: 0.875rem;
 }

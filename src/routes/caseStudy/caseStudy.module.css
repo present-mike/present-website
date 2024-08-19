@@ -1,0 +1,57 @@
+.headSectionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4.125rem;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+}
+
+.subtitleContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-top: 5.375rem;
+    padding-bottom: 7.188rem;
+}
+
+.subtitle {
+    max-width: 56rem;
+    width: 100%;
+}
+
+.rightItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.938rem;
+    margin-bottom: 2.188rem;
+}
+
+.leftItem {
+    margin-bottom: 1.25rem;
+}
+
+.leftItem p {
+    color: #7B7B7B;
+    font-size: 1.25rem;
+}
+
+.caseGallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.caseGallery div {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 0.625rem;
+}
+
+.caseGallery img {
+    width: 100%;
+    height: auto;
+}

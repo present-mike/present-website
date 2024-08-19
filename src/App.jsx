@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { PropTypes } from 'prop-types'
 import { GlobalCanvas, SmoothScrollbar } from '@14islands/r3f-scroll-rig'
 import { Router, Route, Routes } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -7,6 +8,9 @@ import './App.css'
 
 import Home from './routes/home/Home'
 import About from './routes/about/About'
+import Lab from './routes/lab/Lab'
+import CaseStudy from './routes/caseStudy/CaseStudy'
+import CreativeDirector from './routes/creativeDirector/CreativeDirector'
 
 const history = createBrowserHistory({ window });
 
@@ -23,6 +27,9 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/lab" element={<Lab />} />
+                <Route path="/case-study/:id" element={<CaseStudy />} />
+                <Route path="/creative-director/:id" element={<CreativeDirector />} />
               </Routes>
             </BrowserRouter>
             <Footer />
@@ -31,6 +38,14 @@ export default function App() {
       </SmoothScrollbar>
     </div>
   )
+}
+
+BrowserRouter.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  history: PropTypes.any
 }
 
 export function BrowserRouter({ children, history }) {
@@ -43,10 +58,11 @@ export function BrowserRouter({ children, history }) {
 
   return (
     <Router
-      children={children}
       action={state.action}
       location={state.location}
       navigator={history}
-    />
+    >
+      {children}
+    </Router>
   );
 }

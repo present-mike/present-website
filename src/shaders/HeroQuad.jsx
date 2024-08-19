@@ -12,7 +12,7 @@ export default function HeroQuad({ src, ...props }) {
 
     const videoTexture = useVideoTexture(src);
     // const tex = useTexture('placeholder-hero.png');
-    const noiseTexture = useTexture('noise.jpg');
+    const noiseTexture = useTexture('/noise.jpg');
 
     // const videoTexture = useMemo(() => {
     //     return new THREE.VideoTexture(src)

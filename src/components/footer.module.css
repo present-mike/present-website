@@ -13,6 +13,7 @@ input {
     color: black;
     border: 1px solid black;
     margin-right: 0.875rem;
+    padding: 10px;
 }
 
 .footerWrapper {

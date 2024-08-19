@@ -27,7 +27,7 @@ export default function HeroSection({ src }) {
                 <img className={classes.logo} src={logo} alt="logo" />
             </div>
             <div className={classes.stickyContainer}>
-                <div ref={el} className={`${classes.screenHeightContainer} ${classes.sticky}`} />
+                <div ref={el} className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`} />
             </div>
         </>
     );

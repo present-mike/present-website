@@ -1,7 +1,3 @@
-.heroHeader {
-    max-width: 75rem;
-}
-
 .listContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
