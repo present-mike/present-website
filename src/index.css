@@ -48,9 +48,9 @@ h1 {
 h2 {
   font-family: Articulat CF;
   text-transform: uppercase;
+  line-height: 100%;
   font-weight: 500;
   font-size: 4rem;
-  line-height: 115%;
   margin: 0;
 }
 
@@ -59,8 +59,7 @@ h3 {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 2.5rem;
-  line-height: 142.5%;
-  margin: 0;
+  margin: 0.25rem 0 0 0;
 }
 
 h4 {
@@ -105,7 +104,8 @@ a:hover {
 }
 
 hr {
-  border-color: black;
+  border-top: 1px solid black;
+  box-shadow: none;
   margin: 0;
 }
 
@@ -115,10 +115,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-size: calc(15px + 0.390625vw);
 }
 
 .section {
-  padding: 3.75rem;
+  max-width: 100rem;
+}
+
+.wSection {
   max-width: 100rem;
 }
 
@@ -130,6 +134,17 @@ body {
 
 .heroHeader {
   max-width: 75rem;
+}
+
+.arrowDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 0;
+}
+
+.arrowDiv img {
+  height: 0.875rem;;
 }
 
 button {
@@ -153,6 +168,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.pageContainer {
+  width: 100vw;
+}
+
 .galleryContainer {
   height: 25rem;
   margin-bottom: 4rem;
@@ -170,4 +189,144 @@ button:focus-visible {
   height: 100%;
   width: auto;
   padding-right: 0.875rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 300px) {
+  .section {
+    padding: 1.5rem;
+  }
+
+  .wSection {
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 6.25rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  h4 {
+    font-size: 1rem;
+  }
+  
+  h5 {
+    font-size: 1rem;
+  }
+  
+  h6 {
+    font-size: 1rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+
+  .arrowDiv img {
+    height: 0.875rem;;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .section {
+    padding: 3.25rem;
+  }
+
+  .wSection {
+    padding: 0 3.25rem;
+  }
+
+  h1 {
+    font-size: 6.25rem;
+  }
+  
+  h2 {
+    font-size: 3.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.75rem;
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+  }
+  
+  h6 {
+    font-size: 1rem;
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
+
+  .arrowDiv img {
+    height: 1.5rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .section {
+    padding: 3.75rem;
+  }
+
+  .wSection {
+    padding: 0 3.75rem;
+  }
+
+  h1 {
+    font-size: 6.25rem;
+  }
+  
+  h2 {
+    font-size: 4rem;
+  }
+  
+  h3 {
+    font-size: 2.5rem;
+  }
+  
+  h4 {
+    font-size: 1.75rem;
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+  }
+  
+  h6 {
+    font-size: 1rem;
+  }
+  
+  p {
+    font-size: 1.75rem;
+  }
+
+  .arrowDiv img {
+    height: 2rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .section {
+    padding: 3.75rem;
+  }
+
+  .wSection {
+    padding: 0 3.75rem;
+  }
 }

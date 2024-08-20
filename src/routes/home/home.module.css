@@ -82,6 +82,21 @@
     z-index: 2;
 }
 
+.mosaic {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mosaicItem {
+    padding: 2rem 3.75rem;
+    height: 35rem;
+}
+
+.mosaicItem img {
+    width: auto;
+    height: 100%;
+}
+
 .spacer {
     height: 4.375rem;
     width: 100%;

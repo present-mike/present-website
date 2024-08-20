@@ -8,7 +8,7 @@ export default function Lab() {
     })
 
     useEffect(() => {
-        fetch('https://present-cms.payloadcms.app/api/globals/innovation-lab?locale=undefined&draft=false&depth=1')
+        fetch('https://present-cms.payloadcms.app/api/globals/innovation-lab')
             .then(response => response.json())
             .then(data => {
                 setContent(data)

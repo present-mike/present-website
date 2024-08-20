@@ -1,20 +1,28 @@
-import { useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useParams, Link } from "react-router-dom";
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
+import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
 
 export default function CaseStudy() {
-    const { id } = useParams();
-    const [content, setContent] = useStateWithCallback(null, () => {
-    })
+    const { id } = useParams()
+    const [content, setContent] = useStateWithCallback(null, () => { })
+    const [projects, setProjects] = useState(null)
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/case-study/' + id + '?locale=undefined&draft=true&depth=1')
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                console.log(data)
+            })
+            .catch(error => console.error(error));
+
+        fetch('https://present-cms.payloadcms.app/api/creative-directors')
+            .then(response => response.json())
+            .then(data => {
+                setProjects(data.docs)
+                console.log(data.docs)
             })
             .catch(error => console.error(error));
     }, []);
@@ -32,11 +40,10 @@ export default function CaseStudy() {
                             <ReactPlayer url={content.reel.url} key={content.reel.url} width="100%" height="100%" />
                         </div>
                     </div>
-                    <hr />
                     <div className="section">
                         <div className={classes.subtitleContainer}>
                             <div>
-                                <h3 className={classes.leftItem}>{content.name}</h3>
+                                <h3 className={`${classes.leftItem} ${classes.mediumWeight}`} >{content.name}</h3>
                                 <div className={classes.leftItem}>
                                     <h5>What we did do</h5>
                                     <p>{content.roles[0].role}</p>
@@ -75,7 +82,28 @@ export default function CaseStudy() {
                             ))}
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
+                    <div className='wSection'>
+                        <div className={classes.seeMoreHeader}>
+                            <div className='arrowDiv'>
+                                <h3>View all projects</h3>
+                                <img src={linkArrow} alt="arrow" />
+                            </div>
+                        </div>
+                        <div className={classes.projectGallery}>
+                            {projects &&
+                                (Object.entries(projects).map(([key, value]) => (
+                                    <div key={key}>
+                                        <Link to={'/creative-director/' + value.id} >
+                                            <img src={value.thumbnail.url} alt={value.thumbnail.url} className={classes.square} />
+                                            <h4>{value.name}</h4>
+                                            {/* <p>{value.description}</p> */}
+                                        </Link>
+                                    </div>
+                                )))
+                            }
+                        </div>
+                    </div>
                 </>
             )}
         </>
