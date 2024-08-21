@@ -32,3 +32,71 @@
     background-color: black;
     margin-bottom: 2.813rem;
 }
+
+@media only screen and (min-width: 300px) {
+    .listContainer {
+        margin-top: 2rem;
+    }
+
+    .listItem:nth-child(-n+2) {
+        border-bottom: 1px solid black;
+        padding-bottom: 1.5rem;
+    }
+
+    .listItem:nth-child(n+3) {
+        padding-top: 1.5rem;
+    }
+
+    .dot {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background-color: black;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .listContainer {
+        margin-top: 1rem;
+    }
+
+    .listItem:nth-child(-n+2) {
+        border-bottom: 1px solid black;
+        padding-bottom: 2.5rem;
+    }
+
+    .listItem:nth-child(n+3) {
+        padding-top: 2.5rem;
+    }
+
+    .dot {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: black;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .listContainer {
+        margin-top: 0rem;
+    }
+
+    .listItem:nth-child(-n+2) {
+        padding-bottom: 2.875rem;
+    }
+
+    .listItem:nth-child(n+3) {
+        padding-top: 2.875rem;
+    }
+
+    .dot {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: black;
+        margin-bottom: 2.813rem;
+    }
+}

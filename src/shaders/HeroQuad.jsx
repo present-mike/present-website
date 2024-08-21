@@ -1,9 +1,14 @@
 import { useTexture, useVideoTexture } from "@react-three/drei";
 
+import PropTypes from 'prop-types'
 import HeroMaterial from "./HeroMaterial";
 import { extend, useFrame, useThree } from '@react-three/fiber';
 import { Suspense, useRef } from "react";
 extend({ HeroMaterial });
+
+HeroQuad.propTypes = {
+    src: PropTypes.string,
+}
 
 export default function HeroQuad({ src, ...props }) {
 
@@ -24,7 +29,7 @@ export default function HeroQuad({ src, ...props }) {
         shaderRef.current.uniforms.time.value = clock.getElapsedTime();
     });
 
-    return (<>
+    return (
         <mesh {...props}>
             <planeGeometry />
 
@@ -42,5 +47,5 @@ export default function HeroQuad({ src, ...props }) {
 
             {/* <meshBasicMaterial color="red" /> */}
         </mesh>
-    </>);
+    );
 };

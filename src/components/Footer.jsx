@@ -19,7 +19,7 @@ export default function Footer() {
             .catch(error => console.error(error));
     }, [])
 
-    const src = 'https://present-cms.payloadcms.app/media/comp2.mp4'
+    const src = 'https://present-cms.payloadcms.app/media/Robin21375.mp4'
 
     return (
         <>

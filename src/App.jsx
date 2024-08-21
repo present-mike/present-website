@@ -19,7 +19,8 @@ export default function App() {
 
   return (
     <div ref={eventSource} className="page-container">
-      <GlobalCanvas />
+      <GlobalCanvas style={{ pointerEvents: 'none' }}>
+      </GlobalCanvas>
       <SmoothScrollbar>
         {() => (
           <>

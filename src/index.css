@@ -37,6 +37,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+canvas {
+  pointer-events: none;
+}
+
 h1 {
   font-family: Articulat CF;
   text-transform: uppercase;
@@ -120,10 +124,12 @@ body {
 
 .section {
   max-width: 100rem;
+  margin: auto;
 }
 
 .wSection {
   max-width: 100rem;
+  margin: auto;
 }
 
 .headerContainer {
@@ -202,7 +208,7 @@ button:focus-visible {
   }
 
   h1 {
-    font-size: 6.25rem;
+    font-size: 2.25rem;
   }
   
   h2 {
@@ -222,7 +228,7 @@ button:focus-visible {
   }
   
   h6 {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   
   p {
@@ -231,6 +237,15 @@ button:focus-visible {
 
   .arrowDiv img {
     height: 0.875rem;;
+  }
+
+  .galleryContainer {
+    height: 8rem;
+    margin-bottom: 1rem;
+  }
+
+  .headerContainer {
+    gap: 2rem;
   }
 }
 
@@ -275,6 +290,15 @@ button:focus-visible {
   .arrowDiv img {
     height: 1.5rem;
   }
+
+  .galleryContainer {
+    height: 16rem;
+    margin-bottom: 2rem;
+  }
+
+  .headerContainer {
+    gap: 7.188rem;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -317,6 +341,11 @@ button:focus-visible {
 
   .arrowDiv img {
     height: 2rem;
+  }
+
+  .galleryContainer {
+    height: 28rem;
+    margin-bottom: 2rem;
   }
 }
 

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { UseCanvas } from '@14islands/r3f-scroll-rig';
-import { StickyScrollScene } from '@14islands/r3f-scroll-rig/powerups'
+import { StickyScrollScene } from '../routes/home/StickyScrollScene'
 import classes from '../routes/home/home.module.css';
 import logo from '../assets/light-logo.svg'
 
@@ -26,7 +26,7 @@ export default function HeroSection({ src }) {
             <div className={`${classes.screenHeightContainer} ${classes.flexDown}`}>
                 <img className={classes.logo} src={logo} alt="logo" />
             </div>
-            <div className={classes.stickyContainer}>
+            <div className={`${classes.stickyContainer}`}>
                 <div ref={el} className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`} />
             </div>
         </>

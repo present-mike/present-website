@@ -1,5 +1,5 @@
 .infoSection {
-    padding: 2.25rem 4rem;
+    padding: 2.25rem 0;
 }
 
 .subtitle {
@@ -23,11 +23,7 @@
 }
 
 .leftItem {
-    margin-bottom: 1.25rem;
-    max-width: 24rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: grid;
 }
 
 .leftItem img {
@@ -43,4 +39,52 @@
 .leftItem a {
     font-size: 1.25rem;
     text-transform: Capitalize;
+}
+
+.square {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.mediumWeight {
+    font-weight: 500;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 300px) {
+    .subtitleContainer {
+        flex-direction: column;
+        gap: 3rem;
+        padding-top: 0rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .leftItem {
+        margin-bottom: 0rem;
+        max-width: 24rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .subtitleContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding-top: 0rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }
