@@ -1,0 +1,168 @@
+a {
+    font-family: Neue Haas Unica;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: black;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+input {
+    background-color: transparent;
+    border-radius: 0;
+    color: black;
+    border: 1px solid black;
+    margin-right: 0.875rem;
+    margin-bottom: 0.875rem;
+    padding: 10px;
+}
+
+.footerWrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.quadRef {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.blur {
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.spacer {
+    height: 4.375rem;
+    width: 100%;
+    background-color: white;
+}
+
+.linkContainer {
+    display: flex;
+    z-index: 999;
+}
+
+.linkItem {
+    flex: 1;
+    padding: 4rem;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.linkItem:first-child {
+    flex: 2;
+}
+
+.linkItem:last-child {
+    border-right: none;
+}
+
+.subItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.logoContainer {
+    margin: 0;
+    padding: 1.875rem 3.75rem 0 3.75rem;
+}
+
+.logo {
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    transform: translateY(2px);
+}
+
+.logoSubtitle {
+    text-transform: uppercase;
+    font-family: Neue Haas Unica;
+    font-size: 0.875rem;
+    color: #595959;
+    margin-bottom: 0.5rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 300px) {
+    .linkContainer {
+        flex-direction: column;
+    }
+
+    .linkItem {
+        padding: 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid black;
+        border-right: none;
+    }
+
+    .linkItem:last-child {
+        border-bottom: none;
+    }
+
+    .subItem {
+        gap: 0.1rem;
+    }
+
+    .logoContainer {
+        margin: 0;
+        padding: 1rem 2rem 0 2rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .linkContainer {
+        flex-direction: column;
+    }
+
+    .linkItem {
+        padding: 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid black;
+        border-right: none;
+    }
+
+    .linkItem:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .linkContainer {
+        flex-direction: row;
+    }
+
+    .linkItem {
+        padding: 3.75rem;
+        gap: 1.5rem;
+        border-right: 1px solid black;
+        border-bottom: none;
+    }
+
+    .logoContainer {
+        margin: 0;
+        padding: 1.875rem 3.75rem 0 3.75rem;
+    }
+
+    .subItem {
+        gap: 0.875rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .linkItem {
+        padding: 3.75rem;
+        gap: 1.5rem;
+        border-right: 1px solid black;
+        border-bottom: none;
+    }
+}

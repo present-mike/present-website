@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
+import Header from '../../components/header/Header'
 import classes from './creativeDirector.module.css'
 
 export default function CreativeDirector() {
@@ -24,6 +25,7 @@ export default function CreativeDirector() {
 
     return (
         <>
+            <Header />
             {content && (
                 <>
                     <div className="section">

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
+import Header from '../../components/header/Header'
 import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
 
@@ -29,6 +30,7 @@ export default function CaseStudy() {
 
     return (
         <>
+            <Header />
             {content && (
                 <>
                     <div className="section">

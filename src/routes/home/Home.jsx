@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import classes from './home.module.css'
 import HeroSection from "../../shaders/HeroSection"
+import MosaicItem from "../../components/mosaicItem/MosaicItem"
 import arrow from '../../assets/down-arrow.svg'
+import linkArrow from '../../assets/link-arrow.svg'
+import Header from '../../components/header/Header'
 
 export default function Home() {
+    const { ref, inView, entry } = useInView({ threshold: 0, triggerOnce: false });
     const [content, setContent] = useState([])
     const [projects, setProjects] = useState([])
     const [lab, setLab] = useState(null)
@@ -41,17 +46,12 @@ export default function Home() {
             .catch(error => console.error(error));
     }, []);
 
-    function getProjectType(project) {
-        let path = 'case-study'
-        if (Object.hasOwn(project, 'socials')) {
-            path = 'creative-director'
-        }
-        return path
-    }
-
     return (
         <>
-            <div className={classes.dataMoshContainer}>
+            {!inView && (
+                <Header />
+            )}
+            <div className={classes.dataMoshContainer} ref={ref}>
                 <HeroSection src={reel} key={reel} />
                 <div className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                     <div className="section">
@@ -69,29 +69,15 @@ export default function Home() {
                     (
                         <>
                             <div className={classes.mosaicRow}>
-                                {Object.entries(projects.slice(0, Math.ceil(projects.length / 2))).map(([key, value]) => {
-                                    const path = getProjectType(value)
-                                    return (
-                                        <div key={key} className={classes.mosaicItem}>
-                                            <Link to={`/${path}/` + value.id} >
-                                                <img src={value.thumbnail.url} alt={value.name} />
-                                            </Link>
-                                        </div>
-                                    )
-                                }
+                                {Object.entries(projects.slice(0, Math.ceil(projects.length / 2))).map(([key, value]) => (
+                                    <MosaicItem key={key} item={value} />
+                                )
                                 )}
                             </div>
                             <div className={classes.mosaicRow}>
-                                {Object.entries(projects.slice(Math.ceil(projects.length / 2))).map(([key, value]) => {
-                                    const path = getProjectType(value)
-                                    return (
-                                        <div key={key} className={classes.mosaicItem}>
-                                            <Link to={`/${path}/` + value.id} >
-                                                <img src={value.thumbnail.url} alt={value.name} />
-                                            </Link>
-                                        </div>
-                                    )
-                                }
+                                {Object.entries(projects.slice(0, Math.ceil(projects.length / 2))).map(([key, value]) => (
+                                    <MosaicItem key={key} item={value} />
+                                )
                                 )}
                             </div>
                         </>
@@ -102,6 +88,12 @@ export default function Home() {
             <div className='wSection'>
                 <div className={classes.labHeader}>
                     <h3>{content.InnovationLabDescription}</h3>
+                    <Link to="/lab">
+                        <div className='linkContainer'>
+                            <h4>Read More</h4>
+                            <img src={linkArrow} alt="arrow" className={classes.arrow} />
+                        </div>
+                    </Link>
                 </div>
             </div>
             {lab && (

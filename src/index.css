@@ -119,7 +119,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  font-size: calc(15px + 0.390625vw);
 }
 
 .section {
@@ -151,6 +150,11 @@ body {
 
 .arrowDiv img {
   height: 0.875rem;;
+}
+
+.linkContainer {
+  display: flex;
+  gap: 1rem;
 }
 
 button {
@@ -272,7 +276,7 @@ button:focus-visible {
   }
   
   h4 {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
   
   h5 {
@@ -284,7 +288,7 @@ button:focus-visible {
   }
   
   p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .arrowDiv img {
@@ -324,7 +328,7 @@ button:focus-visible {
   }
   
   h4 {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
   
   h5 {
@@ -336,7 +340,7 @@ button:focus-visible {
   }
   
   p {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 
   .arrowDiv img {

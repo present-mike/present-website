@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import useStateWithCallback from 'use-state-with-callback';
+import Header from '../../components/header/Header'
 import classes from './about.module.css'
 
 export default function About() {
@@ -11,19 +12,19 @@ export default function About() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                console.log(data)
             })
             .catch(error => console.error(error));
     }, []);
 
     return (
         <>
+            <Header />
             {content && (
                 <>
                     <div className="section">
                         <div className='headerContainer'>
                             <h2 className='heroHeader'>{content.Headline}</h2>
-                            <img src={content.HeaderImage.url} className={classes.heroSubtitle} key={content.HeaderImage.url} />
+                            <img src={content.HeaderImage.url} key={content.HeaderImage.url} />
                         </div>
                     </div>
                     <hr />

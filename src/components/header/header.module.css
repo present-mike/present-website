@@ -1,0 +1,108 @@
+.stickyHeader {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    top: 0;
+    z-index: 99;
+}
+
+.navSpacing {
+    width: 100%;
+    padding: 3rem 0;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headLogo {
+    width: auto;
+}
+
+ul {
+    list-style-type: none;
+    vertical-align: baseline;
+    margin: 0;
+    display: flex;
+    gap: 2.25rem;
+}
+
+p {
+    font-family: Articulat CF;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.cleanButton {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: white;
+}
+
+.cleanButton:hover {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: white;
+}
+
+@media only screen and (min-width: 300px) {
+    .headLogo {
+        height: 1rem;
+    }
+
+    .navSpacing {
+        padding: 1rem 0;
+    }
+
+    p {
+        font-size: 0.5rem;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .headLogo {
+        height: 1.5rem;
+    }
+
+    .navSpacing {
+        padding: 2rem 0;
+    }
+
+    p {
+        font-size: 0.75rem;
+    }
+
+    ul {
+        flex-direction: row;
+        gap: 2.25rem;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .headLogo {
+        height: 1.75rem;
+    }
+
+    .navSpacing {
+        padding: 2.25rem 0;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    ul {
+        gap: 2.5rem;
+    }
+}

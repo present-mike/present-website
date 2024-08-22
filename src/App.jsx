@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import { PropTypes } from 'prop-types'
 import { GlobalCanvas, SmoothScrollbar } from '@14islands/r3f-scroll-rig'
-import { Router, Route, Routes } from "react-router-dom";
-import { createBrowserHistory } from "history";
-import Footer from './components/Footer'
+import { Router, Route, Routes } from "react-router-dom"
+import { createBrowserHistory } from "history"
+import Footer from './components/footer/Footer'
 import './App.css'
 
 import Home from './routes/home/Home'
@@ -32,8 +32,8 @@ export default function App() {
                 <Route path="/case-study/:id" element={<CaseStudy />} />
                 <Route path="/creative-director/:id" element={<CreativeDirector />} />
               </Routes>
+              <Footer />
             </BrowserRouter>
-            <Footer />
           </>
         )}
       </SmoothScrollbar>

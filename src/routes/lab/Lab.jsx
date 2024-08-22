@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
+import Header from '../../components/header/Header'
 import classes from './lab.module.css'
 
 export default function Lab() {
@@ -18,6 +19,7 @@ export default function Lab() {
 
     return (
         <>
+            <Header />
             {content && (
                 <>
                     <div className="section">
