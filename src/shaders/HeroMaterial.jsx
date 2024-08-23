@@ -9,6 +9,7 @@ const HeroMaterial = shaderMaterial(
         tMap: null,
         tNoise: null,
         time: 0,
+        scrollDelta: 0,
         resolution: [0, 0],
         uColor: new THREE.Color(),
         uAlpha: 1
