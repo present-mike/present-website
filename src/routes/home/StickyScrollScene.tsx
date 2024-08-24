@@ -78,15 +78,13 @@ const renderAsSticky = (
       childBottom = 0
     }
 
-    let offsetTop = 0
-    if (el.current != null) {
-      useRef(el.current.offsetTop).current
-    }
+    // const offsetTop = useRef(el.current.offsetTop).current
+    const offsetTop = 0
 
     return (
       // @ts-ignore
       <StickyChild
-        // offsetTop={offsetTop}
+        offsetTop={offsetTop}
         parentScale={scale}
         childScale={childScale.times(scaleMultiplier)}
         stickyLerp={stickyLerp}
@@ -97,7 +95,6 @@ const renderAsSticky = (
       >
         {children({
           scale: childScale.times(scaleMultiplier),
-          offsetTop: offsetTop,
           parentScale: scale,
           ...props,
         })}

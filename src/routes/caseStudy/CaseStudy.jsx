@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
 import ReactPlayer from 'react-player/lazy'
-import useStateWithCallback from 'use-state-with-callback';
 import Header from '../../components/header/Header'
 import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
 
 export default function CaseStudy() {
     const { id } = useParams()
-    const [content, setContent] = useStateWithCallback(null, () => { })
+    const [content, setContent] = useState(null)
     const [projects, setProjects] = useState(null)
 
     useEffect(() => {
@@ -23,7 +22,6 @@ export default function CaseStudy() {
             .then(response => response.json())
             .then(data => {
                 setProjects(data.docs)
-                console.log(data.docs)
             })
             .catch(error => console.error(error));
     }, []);
@@ -87,10 +85,12 @@ export default function CaseStudy() {
                     <hr />
                     <div className='wSection'>
                         <div className={classes.seeMoreHeader}>
-                            <div className='arrowDiv'>
-                                <h3>View all projects</h3>
-                                <img src={linkArrow} alt="arrow" />
-                            </div>
+                            <Link to="/">
+                                <div className='arrowDiv'>
+                                    <h3>View all projects</h3>
+                                    <img src={linkArrow} alt="arrow" />
+                                </div>
+                            </Link>
                         </div>
                         <div className={classes.projectGallery}>
                             {projects &&

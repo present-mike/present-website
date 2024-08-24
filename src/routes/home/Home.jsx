@@ -64,7 +64,7 @@ export default function Home() {
                 </div>
             </div>
             <div className={classes.spacer} />
-            <div className={`${classes.mosaic} ${classes.screenHeightContainer}`}>
+            <div id="projects" className={`${classes.mosaic} ${classes.screenHeightContainer}`}>
                 {projects &&
                     (
                         <>

@@ -67,6 +67,11 @@ p {
         gap: 0.25rem;
         padding: 0;
     }
+
+    .spacer {
+        width: 100%;
+        height: 3rem;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -87,6 +92,11 @@ p {
         gap: 2.25rem;
         padding: 0;
     }
+
+    .spacer {
+        width: 100%;
+        height: 6.25rem;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -104,5 +114,10 @@ p {
 
     ul {
         gap: 2.5rem;
+    }
+
+    .spacer {
+        width: 100%;
+        height: 6.25rem;
     }
 }

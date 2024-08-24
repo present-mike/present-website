@@ -1,10 +1,10 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { UseCanvas } from '@14islands/r3f-scroll-rig';
 import { StickyScrollScene } from '../routes/home/StickyScrollScene'
+// import { StickyScrollScene } from '@14islands/r3f-scroll-rig/powerups'
 import classes from '../routes/home/home.module.css';
 import logo from '../assets/light-logo.svg'
-import logosmear from '../assets/logosmear.mp4'
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,7 +18,6 @@ HeroSection.propTypes = {
 }
 
 export default function HeroSection({ src }) {
-    const videoRef = useRef(null);
     const scrollDivRef = useRef(null);
     const el = useRef();
 
