@@ -23,10 +23,12 @@ export default function HeroQuad({ src, ...props }) {
     //     return new THREE.VideoTexture(src)
     // }, []);
 
-    // const h = window.innerHeight / 2
+    let prevScrollY = 0;
     useFrame(({ clock }) => {
-        // const position = window.scrollY / h;
         shaderRef.current.uniforms.time.value = clock.getElapsedTime();
+        shaderRef.current.uniforms.scrollDelta.value = window.scrollY - prevScrollY;
+
+        prevScrollY = window.scrollY;
     });
 
     return (
