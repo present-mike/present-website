@@ -9,7 +9,7 @@ import linkArrow from '../../assets/link-arrow.svg'
 import Header from '../../components/header/Header'
 
 export default function Home() {
-    const { ref, inView, entry } = useInView({ threshold: 0, triggerOnce: false });
+    const [ref, inView] = useInView({ threshold: 0, triggerOnce: false });
     const [content, setContent] = useState([])
     const [projects, setProjects] = useState([])
     const [lab, setLab] = useState(null)
