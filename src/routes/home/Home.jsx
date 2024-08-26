@@ -3,13 +3,13 @@ import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import classes from './home.module.css'
 import HeroSection from "../../shaders/HeroSection"
-import MosaicItem from "../../components/mosaicItem/MosaicItem"
+import AlternateRows from '../../components/alternateRows/AlternateRows'
 import arrow from '../../assets/down-arrow.svg'
 import linkArrow from '../../assets/link-arrow.svg'
 import Header from '../../components/header/Header'
 
 export default function Home() {
-    const [ref, inView] = useInView({ threshold: 0, triggerOnce: false });
+    const [ref, inView] = useInView({ threshold: 0 });
     const [content, setContent] = useState([])
     const [projects, setProjects] = useState([])
     const [lab, setLab] = useState(null)
@@ -48,12 +48,14 @@ export default function Home() {
 
     return (
         <>
-            {!inView && (
+            {!inView ? (
                 <Header />
+            ): (
+                <></>
             )}
             <div className={classes.dataMoshContainer} ref={ref}>
                 <HeroSection src={reel} key={reel} />
-                <div className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
+                <div style={{ zIndex: 9999, position: 'relative' }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                     <div className="section">
                         <div className={`${classes.headerContainer}`}>
                             <h1 className={classes.heroHeader}>{content.Headline}</h1>
@@ -64,24 +66,11 @@ export default function Home() {
                 </div>
             </div>
             <div className={classes.spacer} />
-            <div id="projects" className={`${classes.mosaic} ${classes.screenHeightContainer}`}>
-                {projects &&
+            <div id="projects" className={`${classes.mosaic}`}>
+                {projects ?
                     (
-                        <>
-                            <div className={classes.mosaicRow}>
-                                {Object.entries(projects.slice(0, Math.ceil(projects.length / 2))).map(([key, value]) => (
-                                    <MosaicItem key={key} item={value} />
-                                )
-                                )}
-                            </div>
-                            <div className={classes.mosaicRow}>
-                                {Object.entries(projects.slice(0, Math.ceil(projects.length / 2))).map(([key, value]) => (
-                                    <MosaicItem key={key} item={value} />
-                                )
-                                )}
-                            </div>
-                        </>
-                    )
+                        <AlternateRows data={projects} />
+                    ) : null
                 }
             </div>
             <div className={classes.spacer} />
@@ -96,7 +85,7 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-            {lab && (
+            {lab ? (
                 <div className='galleryContainer'>
                     <div className='imgBox'>
                         {Object.entries(lab.gallery).map(([key, value]) => (
@@ -104,7 +93,7 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-            )}
+            ) : null}
         </>
     )
 }

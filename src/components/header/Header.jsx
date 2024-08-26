@@ -25,9 +25,9 @@ export default function Header() {
 
     return (
         <>
-            {location != '/'} && {
+            {location != '/' ? (
                 <div className={classes.spacer} />
-            }
+            ) : null}
             <div className={classes.stickyHeader}>
                 <div className="wSection">
                     <div className={`${classes.navContainer} ${classes.navSpacing}`}>
@@ -41,11 +41,11 @@ export default function Header() {
                         )}
                     </div>
                 </div>
-                {menuOpen && (
+                {menuOpen ? (
                     <div className="wSection">
                         {menu}
                     </div>
-                )}
+                ) : null}
             </div>
         </>
     )

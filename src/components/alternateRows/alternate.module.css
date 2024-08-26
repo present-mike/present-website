@@ -1,0 +1,23 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: '100%';
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+@media only screen and (min-width: 300px) {
+    .row {
+        flex-direction: column;
+        border-bottom: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .row {
+        flex-direction: row;
+        border-bottom: 1px solid black;
+    }
+}
