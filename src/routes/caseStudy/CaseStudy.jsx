@@ -37,7 +37,14 @@ export default function CaseStudy() {
                                 <h2 className='heroHeader'>{content.name}</h2>
                                 <h3>{content.description}</h3>
                             </div>
-                            <ReactPlayer url={content.reel.url} key={content.reel.url} width="100%" height="100%" />
+                            <ReactPlayer 
+                                playing 
+                                loop
+                                url={content.reel.url} 
+                                key={content.reel.url}
+                                width="100%" 
+                                height="100%" 
+                                />
                         </div>
                     </div>
                     <div className="section">
