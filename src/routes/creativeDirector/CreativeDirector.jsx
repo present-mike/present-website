@@ -28,14 +28,15 @@ export default function CreativeDirector() {
             <Header />
             {content && (
                 <>
+                    <div className='spacer' />
                     <div className="section">
                         <div>
-                            <ReactPlayer 
-                                playing 
+                            <ReactPlayer
+                                playing
                                 loop
-                                url={content.reel.url} 
-                                key={content.reel.url} 
-                                width="100%" height="100%" 
+                                url={content.reel.url}
+                                key={content.reel.url}
+                                width="100%" height="100%"
                             />
                         </div>
                     </div>

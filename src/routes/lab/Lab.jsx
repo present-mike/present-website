@@ -22,6 +22,7 @@ export default function Lab() {
             <Header />
             {content && (
                 <>
+                    <div className='spacer' />
                     <div className="section">
                         <div className='headerContainer'>
                             <h2 className='heroHeader'>{content.Headline}</h2>

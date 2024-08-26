@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import classes from './header.module.css'
 import logo from '../../assets/dark-logo.svg'
 import hamburger from './hamburger.svg'
@@ -8,7 +8,6 @@ import hamburger from './hamburger.svg'
 export default function Header() {
     const isTabletUp = useMediaQuery({ query: '(min-width: 768px)' })
     const [menuOpen, setMenuOpen] = useState(false)
-    const location = useLocation();
 
     const menu = <ul>
         <li>
@@ -25,9 +24,6 @@ export default function Header() {
 
     return (
         <>
-            {location != '/' ? (
-                <div className={classes.spacer} />
-            ) : null}
             <div className={classes.stickyHeader}>
                 <div className="wSection">
                     <div className={`${classes.navContainer} ${classes.navSpacing}`}>
