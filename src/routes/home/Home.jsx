@@ -22,6 +22,7 @@ export default function Home() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
+                console.log(data)
                 setReel(data.landing.HeaderReel.url)
                 setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)))
             })
@@ -74,7 +75,7 @@ export default function Home() {
                     <div className={classes.spacer} />
                     <div className='wSection'>
                         <div className={classes.labHeader}>
-                            <h3>{content.InnovationLabDescription}</h3>
+                            <h3>{content.landing.InnovationLabDescription}</h3>
                             <Link to="/lab">
                                 <div className='linkContainer'>
                                     <h4>Read More</h4>
