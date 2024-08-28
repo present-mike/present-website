@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import useStateWithCallback from 'use-state-with-callback';
+import useStateWithCallback from 'use-state-with-callback'
 import Header from '../../components/header/Header'
+import DotList from '../../components/dotList/DotList'
 import classes from './about.module.css'
 
 export default function About() {
@@ -31,16 +32,7 @@ export default function About() {
                     <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
-                            {Object.entries(content.ContentList[0]).map(([key, value]) => {
-                                if (key != "id") {
-                                    return (
-                                        <div key={key} className={classes.listItem}>
-                                            <div className={classes.dot} />
-                                            <h3>{value}</h3>
-                                        </div>
-                                    )
-                                }
-                            })}
+                            <DotList list={content.ContentList[0]} />
                         </div>
                     </div>
                 </>

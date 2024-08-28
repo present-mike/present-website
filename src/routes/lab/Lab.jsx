@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
 import Header from '../../components/header/Header'
+import Carousel from '../../components/carousel/Carousel'
 import classes from './lab.module.css'
 
 export default function Lab() {
@@ -38,9 +39,7 @@ export default function Lab() {
                     </div>
                     <div className='galleryContainer'>
                         <div className='imgBox'>
-                            {Object.entries(content.gallery).map(([key, value]) => (
-                                <img key={key} src={value.image.url} alt={value.image.url} />
-                            ))}
+                            <Carousel images={content.gallery} />
                         </div>
                     </div>
                 </>

@@ -83,11 +83,18 @@ export default function CaseStudy() {
                     </div>
                     <div className='section'>
                         <div className={classes.caseGallery}>
-                            {Object.entries(content.gallery).map(([key, value]) => (
+                            {Object.entries(content.gallery.slice(0, 2)).map(([key, value]) => (
                                 <div key={key}>
                                     <img src={value.image.url} alt={value.image.url} />
                                 </div>
                             ))}
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridColumnGap: '1rem'}}>
+                                {Object.entries(content.gallery.slice(2)).map(([key, value]) => (
+                                    <div key={key} style={{ flexBasis: '50%' }}>
+                                        <img src={value.image.url} alt={value.image.url} />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <hr />
@@ -102,7 +109,7 @@ export default function CaseStudy() {
                         </div>
                         <div className={classes.projectGallery}>
                             {projects &&
-                                (Object.entries(projects).map(([key, value]) => (
+                                (Object.entries(projects.slice(0, 3)).map(([key, value]) => (
                                     <div key={key}>
                                         <Link to={'/creative-director/' + value.id} >
                                             <img src={value.thumbnail.url} alt={value.thumbnail.url} className={classes.square} />
