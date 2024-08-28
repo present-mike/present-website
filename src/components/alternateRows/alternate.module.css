@@ -4,14 +4,6 @@
     width: '100%';
 }
 
-.row:nth-child(even) {
-    height: 34rem;
-}
-
-.row:nth-child(odd) {
-    height: 24rem;
-}
-
 .row:last-child {
     border-bottom: none;
 }
@@ -27,5 +19,13 @@
     .row {
         flex-direction: row;
         border-bottom: 1px solid black;
+    }
+
+    .row:nth-child(even) {
+        height: 34rem;
+    }
+
+    .row:nth-child(odd) {
+        height: 24rem;
     }
 }

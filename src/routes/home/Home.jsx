@@ -16,6 +16,7 @@ export default function Home() {
     const [projects, setProjects] = useState([])
     const [lab, setLab] = useState(null)
     const [reel, setReel] = useState('placeholder-hero.mp4')
+    const [about, setAbout] = useState(null)
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/globals/landing-page')
@@ -44,6 +45,13 @@ export default function Home() {
             .then(response => response.json())
             .then(data => {
                 setLab(data)
+            })
+            .catch(error => console.error(error));
+
+        fetch('https://present-cms.payloadcms.app/api/globals/about?locale=undefined&draft=false&depth=1')
+            .then(response => response.json())
+            .then(data => {
+                setAbout(data)
             })
             .catch(error => console.error(error));
     }, []);
@@ -82,6 +90,13 @@ export default function Home() {
                         }
                     </div>
                     <div className={classes.spacer} />
+                    <div className="section">
+                        <div className='headerContainer'>
+                            <h2 className='heroHeader'>{about.Headline}</h2>
+                            <img src={about.HeaderImage.url} key={about.HeaderImage.url} />
+                        </div>
+                    </div>
+                    <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
                             <DotList list={content.JustificationList[0]} />
