@@ -4,6 +4,14 @@
     width: '100%';
 }
 
+.row:nth-child(even) {
+    height: 34rem;
+}
+
+.row:nth-child(odd) {
+    height: 24rem;
+}
+
 .row:last-child {
     border-bottom: none;
 }

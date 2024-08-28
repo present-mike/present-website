@@ -26,7 +26,7 @@ export default function AlternateRows ({ data }) {
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className={classes.row}>
           {row.map((item) => (
-            <MosaicItem key={item.name} item={item} />
+            <MosaicItem key={item.name + rowIndex} item={item} />
           ))}
         </div>
       ))}
