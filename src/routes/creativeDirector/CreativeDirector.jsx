@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
 import Header from '../../components/header/Header'
+import Loading from '../../components/loading/Loading'
 import classes from './creativeDirector.module.css'
 
 export default function CreativeDirector() {
@@ -26,7 +27,7 @@ export default function CreativeDirector() {
     return (
         <>
             <Header />
-            {content && (
+            {content ? (
                 <>
                     <div className='spacer' />
                     <div className="section">
@@ -66,7 +67,7 @@ export default function CreativeDirector() {
                         </div>
                     </div>
                 </>
-            )}
+            ) : <Loading />}
         </>
     )
 }

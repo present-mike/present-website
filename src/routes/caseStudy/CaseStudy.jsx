@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
 import ReactPlayer from 'react-player/lazy'
 import Header from '../../components/header/Header'
+import Loading from '../../components/loading/Loading'
 import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
 
@@ -29,7 +30,7 @@ export default function CaseStudy() {
     return (
         <>
             <Header />
-            {content && (
+            {content ? (
                 <>
                     <div className='spacer' />
                     <div className="section">
@@ -88,7 +89,7 @@ export default function CaseStudy() {
                                     <img src={value.image.url} alt={value.image.url} />
                                 </div>
                             ))}
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridColumnGap: '1rem'}}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridColumnGap: '1rem' }}>
                                 {Object.entries(content.gallery.slice(2)).map(([key, value]) => (
                                     <div key={key} style={{ flexBasis: '50%' }}>
                                         <img src={value.image.url} alt={value.image.url} />
@@ -122,7 +123,7 @@ export default function CaseStudy() {
                         </div>
                     </div>
                 </>
-            )}
+            ) : <Loading />}
         </>
     )
 }

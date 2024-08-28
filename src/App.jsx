@@ -26,7 +26,6 @@ export default function App() {
         {() => (
           <>
             <BrowserRouter history={history}>
-              <ScrollToTop />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -65,6 +64,7 @@ export function BrowserRouter({ children, history }) {
       location={state.location}
       navigator={history}
     >
+      <ScrollToTop />
       {children}
     </Router>
   );

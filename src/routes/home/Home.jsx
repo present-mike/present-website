@@ -9,56 +9,24 @@ import arrow from '../../assets/down-arrow.svg'
 import linkArrow from '../../assets/link-arrow.svg'
 import DotList from '../../components/dotList/DotList'
 import Header from '../../components/header/Header'
+import Loading from '../../components/loading/Loading'
 
 export default function Home() {
     const [ref, inView] = useInView({ threshold: 0 });
     const [content, setContent] = useState(null)
     const [projects, setProjects] = useState([])
-    const [lab, setLab] = useState(null)
     const [reel, setReel] = useState('placeholder-hero.mp4')
-    const [about, setAbout] = useState(null)
 
     useEffect(() => {
-        fetch('https://present-cms.payloadcms.app/api/globals/landing-page')
+        fetch('https://present-cms.payloadcms.app/api/landing')
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                setReel(data.HeaderReel.url)
-            })
-            .catch(error => console.error(error));
-
-        fetch('https://present-cms.payloadcms.app/api/creative-directors')
-            .then(response => response.json())
-            .then(data => {
-                setProjects(prev => prev.concat(data.docs))
-            })
-            .catch(error => console.error(error));
-
-        fetch('https://present-cms.payloadcms.app/api/case-study')
-            .then(response => response.json())
-            .then(data => {
-                setProjects(prev => prev.concat(data.docs))
-            })
-            .catch(error => console.error(error));
-
-        fetch('https://present-cms.payloadcms.app/api/globals/innovation-lab')
-            .then(response => response.json())
-            .then(data => {
-                setLab(data)
-            })
-            .catch(error => console.error(error));
-
-        fetch('https://present-cms.payloadcms.app/api/globals/about?locale=undefined&draft=false&depth=1')
-            .then(response => response.json())
-            .then(data => {
-                setAbout(data)
+                setReel(data.landing.HeaderReel.url)
+                setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)))
             })
             .catch(error => console.error(error));
     }, []);
-
-    useEffect(() => {
-        setProjects(prev => shuffleArray(prev))
-    }, [])
 
     return (
         <>
@@ -67,15 +35,16 @@ export default function Home() {
             ) : (
                 <></>
             )}
-            {content && (
+
+            {content ? (
                 <>
                     <div className={classes.dataMoshContainer} ref={ref}>
                         <HeroSection src={reel} key={reel} />
                         <div style={{ zIndex: 9999, position: 'relative' }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                             <div className="section">
                                 <div className={`${classes.headerContainer}`}>
-                                    <h1 className={classes.heroHeader}>{content.Headline}</h1>
-                                    <p className={classes.heroSubtitle}>{content.HeadlineSubtitle}</p>
+                                    <h1 className={classes.heroHeader}>{content.landing.Headline}</h1>
+                                    <p className={classes.heroSubtitle}>{content.landing.HeadlineSubtitle}</p>
                                 </div>
                             </div>
                             <img className={classes.arrowImage} src={arrow} alt="Scroll Down" />
@@ -92,14 +61,14 @@ export default function Home() {
                     <div className={classes.spacer} />
                     <div className="section">
                         <div className='headerContainer'>
-                            <h2 className='heroHeader'>{about.Headline}</h2>
-                            <img src={about.HeaderImage.url} key={about.HeaderImage.url} />
+                            <h2 className='heroHeader'>{content.about.Headline}</h2>
+                            <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} />
                         </div>
                     </div>
                     <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
-                            <DotList list={content.JustificationList[0]} />
+                            <DotList list={content.landing.JustificationList[0]} />
                         </div>
                     </div>
                     <div className={classes.spacer} />
@@ -114,15 +83,13 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-                </>
-            )}
-            {lab ? (
-                <div className='galleryContainer'>
-                    <div className='imgBox'>
-                        <Carousel images={lab.gallery} />
+                    <div className='galleryContainer'>
+                        <div className='imgBox'>
+                            <Carousel images={content.lab.gallery} />
+                        </div>
                     </div>
-                </div>
-            ) : null}
+                </>
+            ): <Loading />}
         </>
     )
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import useStateWithCallback from 'use-state-with-callback'
 import Header from '../../components/header/Header'
+import Loading from '../../components/loading/Loading'
 import DotList from '../../components/dotList/DotList'
 import classes from './about.module.css'
 
@@ -20,7 +21,7 @@ export default function About() {
     return (
         <>
             <Header />
-            {content && (
+            {content ? (
                 <>
                     <div className='spacer' />
                     <div className="section">
@@ -36,7 +37,7 @@ export default function About() {
                         </div>
                     </div>
                 </>
-            )}
+            ): <Loading />}
         </>
     )
 }

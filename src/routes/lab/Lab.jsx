@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import useStateWithCallback from 'use-state-with-callback';
 import Header from '../../components/header/Header'
+import Loading from '../../components/loading/Loading'
 import Carousel from '../../components/carousel/Carousel'
 import classes from './lab.module.css'
 
@@ -21,7 +22,7 @@ export default function Lab() {
     return (
         <>
             <Header />
-            {content && (
+            {content ? (
                 <>
                     <div className='spacer' />
                     <div className="section">
@@ -43,7 +44,7 @@ export default function Lab() {
                         </div>
                     </div>
                 </>
-            )}
+            ) : <Loading />}
         </>
     )
 }
