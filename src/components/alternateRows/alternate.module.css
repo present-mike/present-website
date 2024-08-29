@@ -22,10 +22,10 @@
     }
 
     .row:nth-child(even) {
-        height: 34rem;
+        height: 55vh;
     }
 
     .row:nth-child(odd) {
-        height: 24rem;
+        height: 45vh;
     }
 }

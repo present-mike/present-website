@@ -17,6 +17,28 @@ input {
     padding: 10px;
 }
 
+.screenHeightContainer {
+    width: 100%;
+    height: 100vh;
+}
+
+.stickyContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.noTouch {
+    pointer-events: none;
+}
+
 .footerWrapper {
     position: relative;
     overflow: hidden;

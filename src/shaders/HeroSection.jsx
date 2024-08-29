@@ -1,7 +1,9 @@
 import { useRef, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import PropTypes from 'prop-types'
 import { UseCanvas } from '@14islands/r3f-scroll-rig';
 import { StickyScrollScene } from '../routes/home/StickyScrollScene'
+import ReactPlayer from 'react-player/lazy'
 import classes from '../routes/home/home.module.css';
 import FadeIn from '../components/fadeIn/FadeIn'
 import lottie from 'lottie-web';
@@ -22,6 +24,8 @@ export default function HeroSection({ src }) {
     const scrollDivRef = useRef(null);
     const animationRef = useRef(null);
     const el = useRef();
+
+    const isMobile = useMediaQuery({ query: '(max-width: 425px)' })
 
     useEffect(() => {
         // Load the Lottie animation
@@ -53,20 +57,37 @@ export default function HeroSection({ src }) {
 
     return (
         <>
-            <div className={`${classes.screenHeightContainer} ${classes.flexDown}`} ref={scrollDivRef}>
-                <div style={{ width: '100%', padding: '3rem', boxSizing: 'border-box'}} ref={animationRef} />
-            </div>
-            <FadeIn />
             <div className={`${classes.stickyContainer}`}>
                 <div ref={el} className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`} />
             </div>
-            <UseCanvas>
-                <StickyScrollScene track={el}>
-                    {(props) => (
-                        <HeroQuad src={src} {...props} />
-                    )}
-                </StickyScrollScene>
-            </UseCanvas>
+            {isMobile ? (
+                <div className={`${classes.stickyContainer}`}>
+                    <div className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`}>
+                        <ReactPlayer
+                            playing
+                            loop
+                            url={src}
+                            key={src}
+                            width="100%"
+                            height="100%"
+                        />
+                    </div>
+                </div>
+            ) : (
+                <UseCanvas>
+                    <StickyScrollScene track={el}>
+                        {
+                            (props) => (
+                                <HeroQuad src={src} {...props} />
+                            )}
+                    </StickyScrollScene >
+                </UseCanvas >
+            )
+            }
+            <FadeIn />
+            <div className={`${classes.screenHeightContainer} ${classes.flexDown}`} ref={scrollDivRef}>
+                <div style={{ width: '100%', padding: '3rem', boxSizing: 'border-box' }} ref={animationRef} />
+            </div>
         </>
     );
 }

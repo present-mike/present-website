@@ -22,7 +22,6 @@ export default function Home() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                console.log(data)
                 setReel(data.landing.HeaderReel.url)
                 setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)))
             })
