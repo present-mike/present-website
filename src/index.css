@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Articulat CF";
   font-weight: 400;
   src: url(./assets/fonts/Fontspring-DEMO-articulatcf-regular.otf);
@@ -20,7 +20,7 @@
   font-family: "Neue Haas Unica";
   font-weight: 700;
   src: url(./assets/fonts/NeueHaasUnicaW1G-Black.otf);
-}
+} */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -42,7 +42,7 @@ canvas {
 }
 
 h1 {
-  font-family: Articulat CF;
+  font-family: articulat-cf, sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 6.25rem;
@@ -50,7 +50,7 @@ h1 {
 }
 
 h2 {
-  font-family: Articulat CF;
+  font-family: articulat-cf, sans-serif;
   text-transform: uppercase;
   line-height: 100%;
   font-weight: 500;
@@ -59,7 +59,7 @@ h2 {
 }
 
 h3 {
-  font-family: Articulat CF;
+  font-family: articulat-cf, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 2.5rem;
@@ -67,7 +67,7 @@ h3 {
 }
 
 h4 {
-  font-family: Neue Haas Unica;
+  font-family: neue-haas-unica, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 1.75rem;
@@ -75,7 +75,7 @@ h4 {
 }
 
 h5 {
-  font-family: Neue Haas Unica;
+  font-family: neue-haas-unica, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 1.25rem;
@@ -83,7 +83,7 @@ h5 {
 }
 
 h6 {
-  font-family: Neue Haas Unica;
+  font-family: neue-haas-unica, sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: #7B7B7B;
@@ -92,7 +92,7 @@ h6 {
 }
 
 p {
-  font-family: Neue Haas Unica;
+  font-family: neue-haas-unica, sans-serif;
   font-size: 1.75rem;
   font-weight: 400;
   margin: 0;
@@ -249,7 +249,7 @@ button:focus-visible {
   }
 
   .galleryContainer {
-    height: 8rem;
+    height: 16rem;
     margin-bottom: 1rem;
   }
 

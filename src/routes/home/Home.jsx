@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
+import gsap from 'gsap'
 import classes from './home.module.css'
 import HeroSection from "../../shaders/HeroSection"
 import AlternateRows from '../../components/alternateRows/AlternateRows'
@@ -28,10 +29,34 @@ export default function Home() {
             .catch(error => console.error(error));
     }, []);
 
+    gsap.fromTo('.landing-head',
+        {
+            opacity: 0,
+            x: -100
+        },
+        {
+            scrollTrigger: '.landing-head', // start the animation when ".box" enters the viewport (once)
+            ease: 'sine.out',
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            scrub: 1
+        });
+
+    gsap.fromTo('.entire-nav',
+        {
+            opacity: 0,
+        },
+        {
+            opacity: 1,
+            duration: 1,
+            scrub: 1
+        });
+
     return (
         <>
             {!inView ? (
-                <Header />
+                <Header className='entire-nav' />
             ) : (
                 <></>
             )}
@@ -42,7 +67,7 @@ export default function Home() {
                         <HeroSection src={reel} key={reel} />
                         <div style={{ zIndex: 9999, position: 'relative' }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                             <div className="section">
-                                <div className={`${classes.headerContainer}`}>
+                                <div className={`landing-head ${classes.headerContainer}`}>
                                     <h1 className={classes.heroHeader}>{content.landing.Headline}</h1>
                                     <p className={classes.heroSubtitle}>{content.landing.HeadlineSubtitle}</p>
                                 </div>
@@ -89,7 +114,7 @@ export default function Home() {
                         </div>
                     </div>
                 </>
-            ): <Loading />}
+            ) : <Loading />}
         </>
     )
 }

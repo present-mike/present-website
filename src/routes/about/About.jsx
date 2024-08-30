@@ -18,6 +18,10 @@ export default function About() {
             .catch(error => console.error(error));
     }, []);
 
+    function email(e) {
+        console.log(e)
+    }
+
     return (
         <>
             <Header />
@@ -36,8 +40,26 @@ export default function About() {
                             <DotList list={content.ContentList[0]} />
                         </div>
                     </div>
+                    <hr />
+                    <div className={`section ${classes.contactContainer}`}>
+                        <div>
+                            <h3>Let&apos;s Create Together</h3>
+                            <h4>here@nowpresent.co</h4>
+                        </div>
+                        <hr />
+                        <form className={classes.contactGrid} action={email}>
+                            <h4 className={classes.fullCol}>contact form</h4>
+                            <input type="text" placeholder="First Name*" required></input>
+                            <input type="text" placeholder="Last Name*" required></input>
+                            <input type="text" placeholder="Email*" required></input>
+                            <input type="tel" placeholder="Phone Number"></input>
+                            <input type="text" placeholder="Company Name*" className={classes.fullCol} required></input>
+                            <input type="text" placeholder="Message" className={`${classes.fullCol} ${classes.tallRow}`}></input>
+                            <input type="submit" className={classes.fullCol}></input>
+                        </form>
+                    </div>
                 </>
-            ): <Loading />}
+            ) : <Loading />}
         </>
     )
 }

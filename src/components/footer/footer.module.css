@@ -1,5 +1,5 @@
 a {
-    font-family: Neue Haas Unica;
+    font-family: neue-haas-unica, sans-serif;
     text-transform: uppercase;
     font-weight: 400;
     color: black;
@@ -105,7 +105,7 @@ input {
 
 .logoSubtitle {
     text-transform: uppercase;
-    font-family: Neue Haas Unica;
+    font-family: neue-haas-unica, sans-serif;
     font-size: 0.875rem;
     color: #595959;
     margin-bottom: 0.5rem;

@@ -23,26 +23,24 @@ export default function Header() {
     </ul>
 
     return (
-        <>
-            <div className={classes.stickyHeader}>
-                <div className="wSection">
-                    <div className={`${classes.navContainer} ${classes.navSpacing}`}>
-                        <Link to="/">
-                            <img className={classes.headLogo} src={logo} alt="Present" />
-                        </Link>
-                        {isTabletUp ? <>{menu}</> : (
-                            <button className={classes.cleanButton} onClick={() => setMenuOpen(prev => !prev)}>
-                                <img src={hamburger} alt="Menu" />
-                            </button>
-                        )}
-                    </div>
+        <div className={`${classes.stickyHeader}`}>
+            <div className="wSection">
+                <div className={`${classes.navContainer} ${classes.navSpacing}`}>
+                    <Link to="/">
+                        <img className={classes.headLogo} src={logo} alt="Present" />
+                    </Link>
+                    {isTabletUp ? <>{menu}</> : (
+                        <button className={classes.cleanButton} onClick={() => setMenuOpen(prev => !prev)}>
+                            <img src={hamburger} alt="Menu" />
+                        </button>
+                    )}
                 </div>
-                {menuOpen ? (
-                    <div className="wSection">
-                        {menu}
-                    </div>
-                ) : null}
             </div>
-        </>
+            {menuOpen ? (
+                <div className="wSection">
+                    {menu}
+                </div>
+            ) : null}
+        </div>
     )
 }
