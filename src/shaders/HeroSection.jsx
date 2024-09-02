@@ -66,6 +66,7 @@ export default function HeroSection({ src }) {
                         <ReactPlayer
                             playing
                             loop
+                            muted
                             url={src}
                             key={src}
                             width="100%"

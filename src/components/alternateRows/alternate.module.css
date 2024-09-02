@@ -22,10 +22,30 @@
     }
 
     .row:nth-child(even) {
+        height: 28vh;
+    }
+
+    .row:nth-child(odd) {
+        height: 20vh;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .row:nth-child(even) {
+        height: 32vw;
+    }
+
+    .row:nth-child(odd) {
+        height: 24vw;
+    }
+}
+
+/* @media only screen and (min-width: 1024px) {
+    .row:nth-child(even) {
         height: 55vh;
     }
 
     .row:nth-child(odd) {
-        height: 45vh;
+        height: 45 vh;
     }
-}
+} */

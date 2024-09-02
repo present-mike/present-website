@@ -5,11 +5,14 @@ import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
+import mutedImage from '../../assets/mute.svg'
+import notMutedImage from '../../assets/unmute.svg'
 
 export default function CaseStudy() {
     const { id } = useParams()
     const [content, setContent] = useState(null)
     const [projects, setProjects] = useState(null)
+    const [muted, setMuted] = useState(true)
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/case-study/' + id + '?locale=undefined&draft=true&depth=1')
@@ -39,14 +42,22 @@ export default function CaseStudy() {
                                 <h2 className='heroHeader'>{content.name}</h2>
                                 <h3>{content.description}</h3>
                             </div>
-                            <ReactPlayer
-                                playing
-                                loop
-                                url={content.reel.url}
-                                key={content.reel.url}
-                                width="100%"
-                                height="100%"
-                            />
+                            <div style={{ position: 'relative' }}>
+                                <ReactPlayer
+                                    playing
+                                    loop
+                                    url={content.reel.url}
+                                    key={content.reel.url}
+                                    width="100%"
+                                    height="100%"
+                                    muted={muted}
+                                    onClick={() => setMuted(prev => !prev)}
+                                    volume={1}
+                                />
+                                <div style={{ position: 'absolute', bottom: '2rem', left: '1.5rem', width: '2rem', height: '2rem', pointerEvents: 'none' }}>
+                                    {muted ? <img src={mutedImage} alt="muted" /> : <img src={notMutedImage} alt="not muted" />}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="section">
@@ -123,7 +134,8 @@ export default function CaseStudy() {
                         </div>
                     </div>
                 </>
-            ) : <Loading />}
+            ) : <Loading />
+            }
         </>
     )
 }

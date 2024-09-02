@@ -21,8 +21,6 @@ export default function Footer() {
             .catch(error => console.error(error));
     }, [])
 
-    const src = 'https://present-cms.payloadcms.app/media/Robin21375.mp4'
-
     return (
         <>
             <div className={classes.spacer} />
@@ -34,8 +32,9 @@ export default function Footer() {
                             <ReactPlayer
                                 playing
                                 loop
-                                url={src}
-                                key={src}
+                                muted
+                                url={content.SourceReel.url}
+                                key={content.SourceReel.url}
                                 width="100%"
                                 height="100%"
                             />
@@ -46,7 +45,7 @@ export default function Footer() {
                         <ScrollScene track={el}>
                             {
                                 (props) => (
-                                    <HeroQuad src={src} {...props} />
+                                    <HeroQuad src={content.SourceReel.url} {...props} />
                                 )}
                         </ScrollScene>
                     </UseCanvas >
@@ -57,21 +56,20 @@ export default function Footer() {
                     content && (
                         <div className={`${classes.linkContainer} ${classes.blur}`}>
                             <div className={classes.linkItem}>
-                                <h4>Join our mailing list</h4>
-                                <form>
-                                    <input type="email" />
-                                    <input type="submit" value="Submit" />
-                                </form>
-                            </div>
-                            <div className={classes.linkItem}>
                                 <h4>Contact Us</h4>
                                 <div className={classes.subItem}>
-                                    {Object.entries(content.contact).map(([key, value]) => (
-                                        <a key={key} href={value.link.url}>{value.link.label}</a>
-                                    ))}
+                                    {Object.entries(content.contact).map(([key, value]) =>
+                                        <div key={key}>
+                                            {value.link.url != "NA" ?
+                                                <a href={value.link.url}>{value.link.label}</a>
+                                                : <p className={classes.linkp}>{value.link.label}</p>
+                                            }
+                                        </div>
+                                    )}
                                     <h4>{content.phone}</h4>
                                 </div>
                             </div>
+                            <div className={classes.linkItem} />
                             {isLaptopUp && (
                                 <div className={classes.linkItem} />
                             )}
