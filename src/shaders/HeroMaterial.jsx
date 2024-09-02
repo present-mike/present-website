@@ -8,6 +8,7 @@ const HeroMaterial = shaderMaterial(
     {
         tMap: null,
         tNoise: null,
+        tPrevious: null,
         time: 0,
         scrollDelta: 0,
         resolution: [0, 0],

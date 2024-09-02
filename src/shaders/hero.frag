@@ -1,9 +1,11 @@
 uniform float time;
-uniform float scrollDelta;
 uniform vec2 resolution;
+
+uniform float scrollDelta;
 uniform sampler2D tMap;
 uniform sampler2D tNoise;
-uniform vec3 uColor;
+uniform sampler2D tPrevious;
+
 uniform float uAlpha;
 
 varying vec2 vUv;
@@ -45,6 +47,10 @@ float range(float oldValue, float oldMin, float oldMax, float newMin, float newM
 
 float crange(float oldValue, float oldMin, float oldMax, float newMin, float newMax) {
     return clamp(range(oldValue, oldMin, oldMax, newMin, newMax), min(newMin, newMax), max(newMin, newMax));
+}
+
+vec3 step_gt(vec3 color, float cutoff) {
+    return max(sign(color - cutoff), 0.0);
 }
 
 void main() {
@@ -91,6 +97,16 @@ void main() {
     	uv3.y -= step_y * GLITCHAMP;
     }
     color = texture(tMap, uv3).rgb;
+
+
+    // blend with past frames
+    vec2 prevUv = coverUv;
+    prevUv.y -= (scrollDelta / resolution.y) * pow(crange(abs(scrollDelta), 0., 20., 0., 1.), 0.5);
+    float fade = max(pow(crange(abs(scrollDelta), 0., 30., 0., .95), 0.15) - 0.01, 0.);
+
+    vec3 prevColor = texture(tPrevious, prevUv).rgb;
+    prevColor *= fade * step_gt(prevColor, 0.1);
+    color = max(color, prevColor);
 
     gl_FragColor = vec4(color, 1.0);
 }
