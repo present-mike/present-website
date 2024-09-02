@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import classes from './header.module.css'
@@ -8,10 +8,28 @@ import hamburger from './hamburger.svg'
 export default function Header() {
     const isTabletUp = useMediaQuery({ query: '(min-width: 768px)' })
     const [menuOpen, setMenuOpen] = useState(false)
+    const lastHash = useRef('');
+
+    function toProjects() {
+        if (location.pathname === "/") {
+            if (location.hash) {
+                lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
+            }
+
+            if (lastHash.current && document.getElementById(lastHash.current)) {
+                setTimeout(() => {
+                    document
+                        .getElementById(lastHash.current)
+                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    lastHash.current = '';
+                }, 1000);
+            }
+        }
+    }
 
     const menu = <ul>
         <li>
-            <Link to='/#projects'>
+            <Link to='/#projects' onClick={() => toProjects()}>
                 <p>Work</p>
             </Link>
         </li>

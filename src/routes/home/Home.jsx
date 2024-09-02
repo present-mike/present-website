@@ -35,7 +35,6 @@ export default function Home() {
         if (location.hash) {
             lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
         }
-        console.log(location.hash)
 
         if (lastHash.current && document.getElementById(lastHash.current)) {
             setTimeout(() => {

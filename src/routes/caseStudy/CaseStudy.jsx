@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import ReactPlayer from 'react-player/lazy'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
@@ -10,7 +11,7 @@ import notMutedImage from '../../assets/unmute.svg'
 
 export default function CaseStudy() {
     const { id } = useParams()
-    const [content, setContent] = useState(null)
+    const [content, setContent] = useStateWithCallbackLazy(null)
     const [projects, setProjects] = useState(null)
     const [muted, setMuted] = useState(true)
 
@@ -18,7 +19,7 @@ export default function CaseStudy() {
         fetch('https://present-cms.payloadcms.app/api/case-study/' + id + '?locale=undefined&draft=true&depth=1')
             .then(response => response.json())
             .then(data => {
-                setContent(data)
+                setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
 

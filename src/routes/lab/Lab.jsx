@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
-import useStateWithCallback from 'use-state-with-callback';
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import Carousel from '../../components/carousel/Carousel'
@@ -10,14 +10,13 @@ import notMutedImage from '../../assets/unmute.svg'
 
 export default function Lab() {
     const [muted, setMuted] = useState(true)
-    const [content, setContent] = useStateWithCallback(null, () => {
-    })
+    const [content, setContent] = useStateWithCallbackLazy(null)
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/globals/innovation-lab')
             .then(response => response.json())
             .then(data => {
-                setContent(data)
+                setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
     }, []);

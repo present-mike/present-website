@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import ReactPlayer from 'react-player/lazy'
-import useStateWithCallback from 'use-state-with-callback';
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import classes from './creativeDirector.module.css'
@@ -12,8 +12,7 @@ import notMutedImage from '../../assets/unmute.svg'
 export default function CreativeDirector() {
     const { id } = useParams();
     const [muted, setMuted] = useState(true)
-    const [content, setContent] = useStateWithCallback(null, () => {
-    })
+    const [content, setContent] = useStateWithCallbackLazy(null)
 
     const isTabletUp = useMediaQuery({ query: '(min-width: 768px)' })
 
@@ -21,9 +20,13 @@ export default function CreativeDirector() {
         fetch('https://present-cms.payloadcms.app/api/creative-directors/' + id + '?locale=undefined&draft=true&depth=1')
             .then(response => response.json())
             .then(data => {
-                setContent(data)
+                setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, []);
 
     return (

@@ -1,26 +1,25 @@
 import { useEffect } from 'react'
-import useStateWithCallback from 'use-state-with-callback'
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import DotList from '../../components/dotList/DotList'
 import classes from './about.module.css'
 
 export default function About() {
-    const [content, setContent] = useStateWithCallback(null, () => {
-    })
+    const [content, setContent] = useStateWithCallbackLazy(null)
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/globals/about?locale=undefined&draft=false&depth=1')
             .then(response => response.json())
             .then(data => {
-                setContent(data)
+                setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
     }, []);
 
-    function email(e) {
-        console.log(e)
-    }
+    // function email(e) {
+    //     console.log(e)
+    // }
 
     return (
         <>
@@ -47,7 +46,7 @@ export default function About() {
                             <h4>here@nowpresent.co</h4>
                         </div>
                         <hr />
-                        <form className={classes.contactGrid} action={email}>
+                        <form className={classes.contactGrid}>
                             <h4 className={classes.fullCol}>contact form</h4>
                             <input type="text" placeholder="First Name*" required></input>
                             <input type="text" placeholder="Last Name*" required></input>
