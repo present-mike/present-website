@@ -11,6 +11,11 @@ export default function Header() {
 
     const menu = <ul>
         <li>
+            <Link to='/#projects'>
+                <p>Work</p>
+            </Link>
+        </li>
+        <li>
             <Link to='/lab'>
                 <p>Innovation Lab</p>
             </Link>

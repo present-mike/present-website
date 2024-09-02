@@ -80,15 +80,15 @@ export default function CaseStudy() {
                             <div className={classes.subtitle}>
                                 <div className={classes.rightItem}>
                                     <h4>Insight</h4>
-                                    <p>{content.insight}</p>
+                                    <p style={{ textTransform: 'none' }}>{content.insight}</p>
                                 </div>
                                 <div className={classes.rightItem}>
                                     <h4>Idea</h4>
-                                    <p>{content.idea}</p>
+                                    <p style={{ textTransform: 'none' }}>{content.idea}</p>
                                 </div>
                                 <div className={classes.rightItem}>
                                     <h4>Execution</h4>
-                                    <p>{content.execution}</p>
+                                    <p style={{ textTransform: 'none' }}>{content.execution}</p>
                                 </div>
                             </div>
                         </div>
@@ -100,10 +100,10 @@ export default function CaseStudy() {
                                     <img src={value.image.url} alt={value.image.url} />
                                 </div>
                             ))}
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridColumnGap: '1rem' }}>
+                            <div className={classes.doubleGallery}>
                                 {Object.entries(content.gallery.slice(2)).map(([key, value]) => (
-                                    <div key={key} style={{ flexBasis: '50%' }}>
-                                        <img src={value.image.url} alt={value.image.url} />
+                                    <div key={key} style={{ flexBasis: '50%', height: '100%' }}>
+                                        <img src={value.image.url} alt={value.image.url} style={{ height: '100%', objectFit: 'cover' }} />
                                     </div>
                                 ))}
                             </div>

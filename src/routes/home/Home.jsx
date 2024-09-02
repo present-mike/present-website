@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
@@ -15,8 +16,9 @@ import Loading from '../../components/loading/Loading'
 export default function Home() {
     const [ref, inView] = useInView({ threshold: 0 });
     const [content, setContent] = useState(null)
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useStateWithCallbackLazy([])
     const [reel, setReel] = useState('placeholder-hero.mp4')
+    const lastHash = useRef('');
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/landing')
@@ -24,10 +26,26 @@ export default function Home() {
             .then(data => {
                 setContent(data)
                 setReel(data.landing.HeaderReel.url)
-                setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)))
+                setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)), () => toProjects())
             })
             .catch(error => console.error(error));
     }, []);
+
+    function toProjects() {
+        if (location.hash) {
+            lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
+        }
+        console.log(location.hash)
+
+        if (lastHash.current && document.getElementById(lastHash.current)) {
+            setTimeout(() => {
+                document
+                    .getElementById(lastHash.current)
+                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                lastHash.current = '';
+            }, 1000);
+        }
+    }
 
     gsap.fromTo('.landing-head',
         {
@@ -69,7 +87,7 @@ export default function Home() {
                             <div className="section">
                                 <div className={`landing-head ${classes.headerContainer}`}>
                                     <h1 className={classes.heroHeader}>{content.landing.Headline}</h1>
-                                    <p className={classes.heroSubtitle}>{content.landing.HeadlineSubtitle}</p>
+                                    <p style={{ textTransform: 'none' }} className={classes.heroSubtitle}>{content.landing.HeadlineSubtitle}</p>
                                 </div>
                             </div>
                             <img className={classes.arrowImage} src={arrow} alt="Scroll Down" />

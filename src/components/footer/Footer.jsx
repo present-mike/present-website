@@ -17,7 +17,6 @@ export default function Footer() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
-                console.log(data)
             })
             .catch(error => console.error(error));
     }, [])

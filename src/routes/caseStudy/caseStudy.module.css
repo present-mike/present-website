@@ -35,7 +35,8 @@
     color: #7B7B7B;
 }
 
-.caseGallery, .projectGallery {
+.caseGallery,
+.projectGallery {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -67,6 +68,12 @@
 .square {
     aspect-ratio: 1 / 1;
     object-fit: cover;
+}
+
+.doubleGallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 1rem;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -106,6 +113,12 @@
     .projectGallery div {
         flex-basis: 100%;
         margin-bottom: 1.25rem;
+    }
+
+    .doubleGallery {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 1rem;
     }
 }
 
@@ -160,6 +173,12 @@
 
     .projectGallery div:first-child {
         border-left: none;
+    }
+
+    .doubleGallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1rem;
     }
 }
 
