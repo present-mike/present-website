@@ -17,6 +17,7 @@ export default function Footer() {
             .then(response => response.json())
             .then(data => {
                 setContent(data)
+                console.log(data)
             })
             .catch(error => console.error(error));
     }, [])
@@ -26,31 +27,35 @@ export default function Footer() {
             <div className={classes.spacer} />
             <div className={classes.footerWrapper}>
                 <div className={classes.quadRef} ref={el} />
-                {isMobile ? (
-                    <div className={`${classes.stickyContainer}`}>
-                        <div className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`}>
-                            <ReactPlayer
-                                playing
-                                loop
-                                muted
-                                url={content.SourceReel.url}
-                                key={content.SourceReel.url}
-                                width="100%"
-                                height="100%"
-                            />
-                        </div>
-                    </div>
-                ) : (
-                    <UseCanvas>
-                        <ScrollScene track={el}>
-                            {
-                                (props) => (
-                                    <HeroQuad src={content.SourceReel.url} {...props} />
-                                )}
-                        </ScrollScene>
-                    </UseCanvas >
-                )
-                }
+                {content ? (
+                    <>
+                        {isMobile ? (
+                            <div className={`${classes.stickyContainer}`}>
+                                <div className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`}>
+                                    <ReactPlayer
+                                        playing
+                                        loop
+                                        muted
+                                        url={content.SourceReel.url}
+                                        key={content.SourceReel.url}
+                                        width="100%"
+                                        height="100%"
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            <UseCanvas>
+                                <ScrollScene track={el}>
+                                    {
+                                        (props) => (
+                                            <HeroQuad src={content.SourceReel.url} {...props} />
+                                        )}
+                                </ScrollScene>
+                            </UseCanvas >
+                        )
+                        }
+                    </>
+                ) : null}
                 <hr />
                 {
                     content && (
