@@ -55,6 +55,21 @@ export default function HeroSection({ src }) {
         };
     }, []);
 
+    useEffect(() => {
+        const fadeDiv = scrollDivRef.current;
+
+        gsap.to(fadeDiv, {
+            opacity: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: fadeDiv,
+                start: "top top", // When the top of the div hits the top of the viewport
+                end: "bottom top", // When the bottom of the div hits the top of the viewport
+                scrub: true,      // Smoothly scrubs the animation
+            },
+        });
+    }, []);
+
     return (
         <>
             <div className={`${classes.stickyContainer}`}>
@@ -86,7 +101,7 @@ export default function HeroSection({ src }) {
             )
             }
             <FadeIn />
-            <div className={`${classes.screenHeightContainer} ${classes.flexDown}`} ref={scrollDivRef}>
+            <div className={`${classes.screenHeightContainer} ${classes.flexDown}`} style={{ opacity: 1 }} ref={scrollDivRef}>
                 <div style={{ width: '100%', padding: '3rem', boxSizing: 'border-box' }} ref={animationRef} />
             </div>
         </>
