@@ -83,6 +83,21 @@ export default function Home() {
         };
     }, []);
 
+    useEffect(() => {
+        const fadeDiv = scrollDivRef.current;
+
+        gsap.to(fadeDiv, {
+            opacity: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: fadeDiv,
+                start: "top top", // When the top of the div hits the top of the viewport
+                end: "bottom top", // When the bottom of the div hits the top of the viewport
+                scrub: true,      // Smoothly scrubs the animation
+            },
+        });
+    }, []);
+
     gsap.fromTo('.landing-head',
         {
             opacity: 0,
@@ -119,7 +134,7 @@ export default function Home() {
                 <>
                     <div className={classes.dataMoshContainer} ref={ref}>
                         <HeroSection src={reel} key={reel} />
-                        <div ref={scrollDivRef} style={{ zIndex: 9999, position: 'absolute', bottom: 0 }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
+                        <div ref={scrollDivRef} style={{ zIndex: 9999, position: 'absolute', bottom: 0, opacity: 1 }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                             <div ref={animationRef} style={{ width: '100vw', aspectRatio: '6 / 1', padding: '3rem', boxSizing: 'border-box' }}  />
                             <div className="section">
                                 <div className={`landing-head ${classes.headerContainer}`}>
