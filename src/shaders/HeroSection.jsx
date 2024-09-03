@@ -34,10 +34,8 @@ export default function HeroSection({ src }) {
                     style={{maxWidth: `100vw`, maxHeight: `100vh`, position: `sticky`, top: 0 }}
                 />
             </div> :
-
             <>
             <div ref={el} className={`${classes.screenHeightContainer} ${classes.noTouch}`} />
-
             <UseCanvas>
                 <ScrollScene track={el}>
                     {
