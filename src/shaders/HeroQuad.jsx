@@ -70,14 +70,14 @@ export default function HeroQuad({ src, ...props }) {
         // Vertical blur pass
         meshRef.current.material = verticalBlurRef.current;
         verticalBlurRef.current.uniforms.tDiffuse.value = blurTargetA.texture;
-        verticalBlurRef.current.uniforms.v.value = remap(Math.abs(dScroll), 0, 25, 1, 6, true) / viewport.height;
+        verticalBlurRef.current.uniforms.v.value = remap(Math.abs(dScroll), 0, 25, 0, 6, true) / viewport.height;
         gl.setRenderTarget(blurTargetB);
         gl.render(scene, camera);
 
         // Horizontal blur pass
         meshRef.current.material = horizontalBlurRef.current;
         horizontalBlurRef.current.uniforms.tDiffuse.value = blurTargetB.texture;
-        horizontalBlurRef.current.uniforms.h.value = remap(Math.abs(dScroll), 0, 25, 1, 3, true) / viewport.width;
+        horizontalBlurRef.current.uniforms.h.value = remap(Math.abs(dScroll), 0, 25, 0, 2, true) / viewport.width;
         gl.setRenderTarget(writeTarget.current);
         gl.render(scene, camera);
 
