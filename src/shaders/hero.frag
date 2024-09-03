@@ -101,7 +101,7 @@ void main() {
 
     // blend with past frames
     vec2 prevUv = coverUv;
-    prevUv.y -= (scrollDelta / resolution.y) * pow(crange(abs(scrollDelta), 0., 20., 0., 1.), 0.5);
+    prevUv.y += (scrollDelta / resolution.y) * pow(crange(abs(scrollDelta), 0., 20., 0., 1.), 0.5);
     float fade = max(pow(crange(abs(scrollDelta), 0., 30., 0., .95), 0.15) - 0.01, 0.);
 
     vec3 prevColor = texture(tPrevious, prevUv).rgb;
