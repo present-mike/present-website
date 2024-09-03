@@ -17,34 +17,35 @@ HeroSection.propTypes = {
 
 export default function HeroSection({ src }) {
     const GPUTier = useDetectGPU();
+    const isMobile = useMediaQuery({ query: '(max-width: 425px)' })
     const el = useRef();
 
     return (
         <>
-            {(GPUTier.tier === "0" || (GPUTier.isMobile && GPUTier.tier === "1")) ?
-            <div className={`${classes.screenHeightContainer} ${classes.noTouch}`}>
-                <ReactPlayer
-                    playing
-                    loop
-                    muted
-                    url={src}
-                    key={src}
-                    width='100%'
-                    height='100%'
-                    style={{maxWidth: `100vw`, maxHeight: `100vh`, position: `sticky`, top: 0 }}
-                />
-            </div> :
-            <>
-            <div ref={el} className={`${classes.screenHeightContainer} ${classes.noTouch}`} />
-            <UseCanvas>
-                <ScrollScene track={el}>
-                    {
-                        (props) => (
-                            <HeroQuad src={src} {...props} />
-                    )}
-                </ScrollScene >
-            </UseCanvas >
-            </>}
+            {(GPUTier.tier === "0" || (GPUTier.isMobile && GPUTier.tier === "1") || isMobile) ?
+                <div className={`${classes.screenHeightContainer} ${classes.noTouch}`}>
+                    <ReactPlayer
+                        playing
+                        loop
+                        muted
+                        url={src}
+                        key={src}
+                        width='100%'
+                        height='100%'
+                        style={{ maxWidth: `100vw`, maxHeight: `100vh`, position: `sticky`, top: 0 }}
+                    />
+                </div> :
+                <>
+                    <div ref={el} className={`${classes.screenHeightContainer} ${classes.noTouch}`} />
+                    <UseCanvas>
+                        <ScrollScene track={el}>
+                            {
+                                (props) => (
+                                    <HeroQuad src={src} {...props} />
+                                )}
+                        </ScrollScene >
+                    </UseCanvas >
+                </>}
 
             <FadeIn />
         </>
