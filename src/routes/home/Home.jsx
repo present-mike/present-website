@@ -3,6 +3,9 @@ import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
+import lottie from 'lottie-web';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import classes from './home.module.css'
 import HeroSection from "../../shaders/HeroSection"
 import AlternateRows from '../../components/alternateRows/AlternateRows'
@@ -13,12 +16,18 @@ import DotList from '../../components/dotList/DotList'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 
+import animationData from '../../assets/Present.json'
+gsap.registerPlugin(ScrollTrigger);
+
+
 export default function Home() {
     const [ref, inView] = useInView({ threshold: 0 });
     const [content, setContent] = useState(null)
     const [projects, setProjects] = useStateWithCallbackLazy([])
     const [reel, setReel] = useState('placeholder-hero.mp4')
     const lastHash = useRef('');
+    const scrollDivRef = useRef(null);
+    const animationRef = useRef(null);
 
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/landing')
@@ -45,6 +54,34 @@ export default function Home() {
             }, 1000);
         }
     }
+
+    useEffect(() => {
+        // Load the Lottie animation
+        const lottieAnimation = lottie.loadAnimation({
+            container: animationRef.current, // the DOM element to render the animation
+            renderer: 'svg',
+            loop: false, // Control the loop manually via scroll
+            autoplay: false, // We'll control the animation via GSAP
+            animationData: animationData, // Replace with the path to your Lottie file
+        });
+
+        // GSAP ScrollTrigger setup
+        // ScrollTrigger.create({
+        //     trigger: scrollDivRef.current,
+        //     start: 'top top', // When the top of the container hits the top of the viewport
+        //     end: 'bottom top', // When the bottom of the container hits the bottom of the viewport
+        //     scrub: true, // Smoothly scrubs the animation based on scroll position
+        //     onUpdate: (self) => {
+        //         const progress = self.progress; // Progress of the scroll (0 to 1)
+        //         lottieAnimation.goToAndStop(progress * lottieAnimation.totalFrames, true); // Map scroll progress to animation frames
+        //     },
+        // });
+
+        // Clean up on component unmount
+        return () => {
+            lottieAnimation.destroy(); // Destroy the animation when the component is unmounted
+        };
+    }, []);
 
     gsap.fromTo('.landing-head',
         {
@@ -82,7 +119,8 @@ export default function Home() {
                 <>
                     <div className={classes.dataMoshContainer} ref={ref}>
                         <HeroSection src={reel} key={reel} />
-                        <div style={{ zIndex: 9999, position: 'relative' }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
+                        <div ref={scrollDivRef} style={{ zIndex: 9999, position: 'absolute', bottom: 0 }} className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
+                            <div ref={animationRef} style={{ width: '100vw', aspectRatio: '6 / 1', padding: '3rem', boxSizing: 'border-box' }}  />
                             <div className="section">
                                 <div className={`landing-head ${classes.headerContainer}`}>
                                     <h1 className={classes.heroHeader}>{content.landing.Headline}</h1>

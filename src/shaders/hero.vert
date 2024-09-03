@@ -3,11 +3,13 @@ uniform vec3 uColor;
 uniform float uAlpha;
 
 varying vec2 vUv;
+varying vec2 vSUv;
 
 void main() {
     vUv = uv;
-    vec3 pos = position;
 
-    vec4 modelViewPos = modelViewMatrix * vec4(pos, 1.0);
-    gl_Position = projectionMatrix * modelViewPos;
+    vec4 clipPos = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    vSUv = (clipPos.xy / clipPos.w) * vec2(.5) + vec2(.5);
+
+    gl_Position = clipPos;
 }

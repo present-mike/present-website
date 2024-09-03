@@ -8,6 +8,7 @@ uniform sampler2D tPrevious;
 
 uniform float uAlpha;
 
+varying vec2 vSUv;
 varying vec2 vUv;
 
 // Emulates background-size: cover
@@ -63,7 +64,7 @@ void main() {
     float GLITCHAMOUNT = 0.55;
     float GLITCHAMP = crange(abs(scrollDelta), 0., 20., 0., 1.); // 0-1
 
-    vec2 coverUv = uvCover(vUv, vec2(1920., 1080.), resolution.xy);
+    vec2 coverUv = uvCover(vSUv, vec2(1920., 1080.), resolution.xy);
     vec3 color = texture(tMap, coverUv).rgb;
     // color = vec3(vUv, 0.);
 
@@ -110,6 +111,7 @@ void main() {
     color = max(color, prevColor);
 
     // color = prevColor;
+    // color = vec3(coverUv, 0.);
 
     gl_FragColor = vec4(color, 1.0);
 }
