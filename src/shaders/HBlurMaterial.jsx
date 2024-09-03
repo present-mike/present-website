@@ -7,7 +7,7 @@ import fs from './hblur.frag';
 const HBlurMaterial = shaderMaterial(
     {
         tDiffuse: null,
-        v: 1 / 512
+        h: 1 / 512
     }, vs, fs
 )
 

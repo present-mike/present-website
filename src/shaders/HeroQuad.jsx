@@ -16,6 +16,11 @@ HeroQuad.propTypes = {
     src: PropTypes.string,
 }
 
+function remap(value, min1, max1, min2, max2, clamp = false) {
+    let v = clamp ? Math.min(Math.max(value, min1), max2) : value;
+    return min2 + (v - min1) * (max2 - min2) / (max1 - min1);
+}
+
 export default function HeroQuad({ src, ...props }) {
     const shaderRef = useRef();
     const meshRef = useRef();
@@ -39,13 +44,16 @@ export default function HeroQuad({ src, ...props }) {
     const writeTarget = useRef(renderTargetB);
 
     let prevScrollY = 0;
+    let dScroll = 0;
     useFrame(({ clock }) => {
         if (!shaderRef.current || !meshRef.current || !horizontalBlurRef.current || !verticalBlurRef.current) return;
 
-        shaderRef.current.uniforms.time.value = clock.getElapsedTime();
-        shaderRef.current.uniforms.scrollDelta.value = window.scrollY - prevScrollY;
-        shaderRef.current.uniforms.tPrevious.value = readTarget.current.texture;
+        dScroll = window.scrollY - prevScrollY;
         prevScrollY = window.scrollY;
+
+        shaderRef.current.uniforms.time.value = clock.getElapsedTime();
+        shaderRef.current.uniforms.scrollDelta.value = dScroll;
+        shaderRef.current.uniforms.tPrevious.value = readTarget.current.texture;
 
         // Render current video frame to the write target
         const currentScene = scene.background;
@@ -62,12 +70,14 @@ export default function HeroQuad({ src, ...props }) {
         // Vertical blur pass
         meshRef.current.material = verticalBlurRef.current;
         verticalBlurRef.current.uniforms.tDiffuse.value = blurTargetA.texture;
+        verticalBlurRef.current.uniforms.v.value = remap(Math.abs(dScroll), 0, 25, 1, 6, true) / viewport.height;
         gl.setRenderTarget(blurTargetB);
         gl.render(scene, camera);
 
         // Horizontal blur pass
         meshRef.current.material = horizontalBlurRef.current;
         horizontalBlurRef.current.uniforms.tDiffuse.value = blurTargetB.texture;
+        horizontalBlurRef.current.uniforms.h.value = remap(Math.abs(dScroll), 0, 25, 1, 3, true) / viewport.width;
         gl.setRenderTarget(writeTarget.current);
         gl.render(scene, camera);
 
@@ -89,11 +99,11 @@ export default function HeroQuad({ src, ...props }) {
             <Suspense fallback={<meshBasicMaterial color="black" />}>
                 <hBlurMaterial
                     ref={horizontalBlurRef}
-                    h={3 / viewport.width}
+                    h={1 / viewport.width}
                 />
                 <vBlurMaterial
                     ref={verticalBlurRef}
-                    v={3 / viewport.height}
+                    v={1 / viewport.height}
                 />
 
                 <heroMaterial
