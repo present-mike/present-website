@@ -29,6 +29,8 @@ export default function Home() {
     const scrollDivRef = useRef(null);
     const animationRef = useRef(null);
 
+    let animationSet = false
+
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/landing')
             .then(response => response.json())
@@ -56,47 +58,42 @@ export default function Home() {
     }
 
     function addAnimation() {
-        // Load the Lottie animation
-        const lottieAnimation = lottie.loadAnimation({
-            container: animationRef.current, // the DOM element to render the animation
-            renderer: 'svg',
-            loop: false, // Control the loop manually via scroll
-            autoplay: false, // We'll control the animation via GSAP
-            animationData: animationData, // Replace with the path to your Lottie file
-        });
+        if (!animationSet) {
+            // Load the Lottie animation
+            const lottieAnimation = lottie.loadAnimation({
+                container: animationRef.current, // the DOM element to render the animation
+                renderer: 'svg',
+                loop: false, // Control the loop manually via scroll
+                autoplay: false, // We'll control the animation via GSAP
+                animationData: animationData, // Replace with the path to your Lottie file
+            });
 
-        // GSAP ScrollTrigger setup
-        ScrollTrigger.create({
-            trigger: scrollDivRef.current,
-            start: 'top top', // When the top of the container hits the top of the viewport
-            end: 'bottom top', // When the bottom of the container hits the bottom of the viewport
-            scrub: true, // Smoothly scrubs the animation based on scroll position
-            onUpdate: (self) => {
-                const progress = self.progress; // Progress of the scroll (0 to 1)
-                lottieAnimation.goToAndStop(progress * lottieAnimation.totalFrames, true); // Map scroll progress to animation frames
-            },
-        });
+            // GSAP ScrollTrigger setup
+            ScrollTrigger.create({
+                trigger: scrollDivRef.current,
+                start: 'top top', // When the top of the container hits the top of the viewport
+                end: 'bottom top', // When the bottom of the container hits the bottom of the viewport
+                scrub: true, // Smoothly scrubs the animation based on scroll position
+                onUpdate: (self) => {
+                    const progress = self.progress; // Progress of the scroll (0 to 1)
+                    lottieAnimation.goToAndStop(progress * lottieAnimation.totalFrames, true); // Map scroll progress to animation frames
+                },
+            });
 
-        // Clean up on component unmount
-        return () => {
-            lottieAnimation.destroy(); // Destroy the animation when the component is unmounted
-        };
+            gsap.to(scrollDivRef.current, {
+                opacity: 0,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: scrollDivRef.current,
+                    start: "top top", // When the top of the div hits the top of the viewport
+                    end: "bottom top", // When the bottom of the div hits the top of the viewport
+                    scrub: true,      // Smoothly scrubs the animation
+                },
+            });
+
+            animationSet = true;
+        }
     }
-
-    useEffect(() => {
-        const fadeDiv = scrollDivRef.current;
-
-        gsap.to(fadeDiv, {
-            opacity: 0,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: fadeDiv,
-                start: "top top", // When the top of the div hits the top of the viewport
-                end: "bottom top", // When the bottom of the div hits the top of the viewport
-                scrub: true,      // Smoothly scrubs the animation
-            },
-        });
-    }, []);
 
     gsap.fromTo('.landing-head',
         {
