@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useTexture, useVideoTexture, useFBO } from "@react-three/drei";
+import { useTexture, useVideoTexture, useFBO, useDetectGPU } from "@react-three/drei";
 import { extend, useFrame, useThree } from '@react-three/fiber';
 import { Suspense, useRef, useMemo } from "react";
 import * as THREE from 'three';
@@ -28,6 +28,7 @@ export default function HeroQuad({ src, ...props }) {
     const verticalBlurRef = useRef();
 
     const { viewport, gl, scene, camera } = useThree();
+    const GPUTier = useDetectGPU();
 
     const videoTexture = useVideoTexture(src);
     const noiseTexture = useTexture('/noise.jpg');
@@ -45,6 +46,8 @@ export default function HeroQuad({ src, ...props }) {
 
     let prevScrollY = 0;
     let dScroll = 0;
+    let useBlur = GPUTier.tier > 2;
+
     useFrame(({ clock }) => {
         if (!shaderRef.current || !meshRef.current || !horizontalBlurRef.current || !verticalBlurRef.current) return;
 
@@ -61,25 +64,26 @@ export default function HeroQuad({ src, ...props }) {
 
         scene.background = null;
         scene.overrideMaterial = shaderRef.current;
-        gl.setRenderTarget(blurTargetA);
+        gl.setRenderTarget(useBlur ? blurTargetA : writeTarget.current);
         gl.render(scene, camera);
         scene.background = currentScene;
         scene.overrideMaterial = currentOverrideMaterial;
 
-
-        // Vertical blur pass
-        meshRef.current.material = verticalBlurRef.current;
-        verticalBlurRef.current.uniforms.tDiffuse.value = blurTargetA.texture;
-        verticalBlurRef.current.uniforms.v.value = remap(Math.abs(dScroll), 0, 25, 0, 6, true) / viewport.height;
-        gl.setRenderTarget(blurTargetB);
-        gl.render(scene, camera);
-
-        // Horizontal blur pass
-        meshRef.current.material = horizontalBlurRef.current;
-        horizontalBlurRef.current.uniforms.tDiffuse.value = blurTargetB.texture;
-        horizontalBlurRef.current.uniforms.h.value = remap(Math.abs(dScroll), 0, 25, 0, 2, true) / viewport.width;
-        gl.setRenderTarget(writeTarget.current);
-        gl.render(scene, camera);
+        if (useBlur) {
+            // Vertical blur pass
+            meshRef.current.material = verticalBlurRef.current;
+            verticalBlurRef.current.uniforms.tDiffuse.value = blurTargetA.texture;
+            verticalBlurRef.current.uniforms.v.value = remap(Math.abs(dScroll), 0, 25, 0, 6, true) / viewport.height;
+            gl.setRenderTarget(blurTargetB);
+            gl.render(scene, camera);
+    
+            // Horizontal blur pass
+            meshRef.current.material = horizontalBlurRef.current;
+            horizontalBlurRef.current.uniforms.tDiffuse.value = blurTargetB.texture;
+            horizontalBlurRef.current.uniforms.h.value = remap(Math.abs(dScroll), 0, 25, 0, 2, true) / viewport.width;
+            gl.setRenderTarget(writeTarget.current);
+            gl.render(scene, camera);
+        }
 
 
         // Reset shaders for actual draw pass
