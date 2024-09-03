@@ -108,5 +108,7 @@ void main() {
     prevColor *= fade * step_gt(prevColor, 0.1);
     color = max(color, prevColor);
 
+    // color = prevColor;
+
     gl_FragColor = vec4(color, 1.0);
 }
