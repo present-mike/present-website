@@ -38,12 +38,6 @@ input[type="text"], input[type="tel"]  {
     border-bottom: 1px solid black;
 }
 
-input:focus {
-    border: none;
-    border-radius: 0;
-    /* border-bottom: 1px solid black; */
-}
-
 ::placeholder {
     color: black;
     opacity: 1;

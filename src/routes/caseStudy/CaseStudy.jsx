@@ -113,7 +113,7 @@ export default function CaseStudy() {
                     <hr />
                     <div className='wSection'>
                         <div className={classes.seeMoreHeader}>
-                            <Link to="/">
+                            <Link to="/#projects">
                                 <div className='arrowDiv'>
                                     <h3>View all projects</h3>
                                     <img src={linkArrow} alt="arrow" />
