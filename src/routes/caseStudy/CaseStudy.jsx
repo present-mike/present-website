@@ -21,7 +21,7 @@ export default function CaseStudy() {
                 setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
-    }, []);
+    }, [id]);
 
     return (
         <>
@@ -103,7 +103,7 @@ export default function CaseStudy() {
                         </div>
                     </div>
                     <hr />
-                    <ProjectNavBar />
+                    <ProjectNavBar currentId={id} />
                 </>
             ) : <Loading />
             }

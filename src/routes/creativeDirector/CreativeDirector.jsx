@@ -24,7 +24,7 @@ export default function CreativeDirector() {
                 setContent(data, () => window.scrollTo(0, 0))
             })
             .catch(error => console.error(error));
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -78,7 +78,7 @@ export default function CreativeDirector() {
                         </div>
                     </div>
                     <hr />
-                    <ProjectNavBar />
+                    <ProjectNavBar currentId={id} />
                 </>
             ) : <Loading />}
         </>
