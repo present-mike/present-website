@@ -98,13 +98,11 @@ export default function Home() {
     gsap.fromTo('.landing-head',
         {
             opacity: 0,
-            x: -100
         },
         {
             scrollTrigger: '.landing-head', // start the animation when ".box" enters the viewport (once)
             ease: 'sine.out',
             opacity: 1,
-            x: 0,
             duration: 1,
             scrub: 1
         });
@@ -158,7 +156,7 @@ export default function Home() {
                     <div className="section">
                         <div className='headerContainer'>
                             <h2 className='heroHeader'>{content.about.Headline}</h2>
-                            <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} />
+                            {/* <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} /> */}
                         </div>
                     </div>
                     <hr />

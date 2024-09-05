@@ -29,6 +29,11 @@ export default function Header() {
 
     const menu = <ul>
         <li>
+            <Link to='/about'>
+                <p>About</p>
+            </Link>
+        </li>
+        <li>
             <Link to='/#projects' onClick={() => toProjects()}>
                 <p>Work</p>
             </Link>
@@ -36,11 +41,6 @@ export default function Header() {
         <li>
             <Link to='/lab'>
                 <p>Innovation Lab</p>
-            </Link>
-        </li>
-        <li>
-            <Link to='/about'>
-                <p>About</p>
             </Link>
         </li>
     </ul>

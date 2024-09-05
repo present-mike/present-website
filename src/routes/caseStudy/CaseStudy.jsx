@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import ReactPlayer from 'react-player/lazy'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
-import linkArrow from '../../assets/link-arrow.svg'
 import classes from './caseStudy.module.css'
 import mutedImage from '../../assets/mute.svg'
 import notMutedImage from '../../assets/unmute.svg'
+import ProjectNavBar from '../../components/projectNavBar/ProjectNavBar'
 
 export default function CaseStudy() {
     const { id } = useParams()
     const [content, setContent] = useStateWithCallbackLazy(null)
-    const [projects, setProjects] = useState(null)
     const [muted, setMuted] = useState(true)
 
     useEffect(() => {
@@ -20,13 +19,6 @@ export default function CaseStudy() {
             .then(response => response.json())
             .then(data => {
                 setContent(data, () => window.scrollTo(0, 0))
-            })
-            .catch(error => console.error(error));
-
-        fetch('https://present-cms.payloadcms.app/api/creative-directors')
-            .then(response => response.json())
-            .then(data => {
-                setProjects(data.docs)
             })
             .catch(error => console.error(error));
     }, []);
@@ -111,29 +103,7 @@ export default function CaseStudy() {
                         </div>
                     </div>
                     <hr />
-                    <div className='wSection'>
-                        <div className={classes.seeMoreHeader}>
-                            <Link to="/#projects">
-                                <div className='arrowDiv'>
-                                    <h3>View all projects</h3>
-                                    <img src={linkArrow} alt="arrow" />
-                                </div>
-                            </Link>
-                        </div>
-                        <div className={classes.projectGallery}>
-                            {projects &&
-                                (Object.entries(projects.slice(0, 3)).map(([key, value]) => (
-                                    <div key={key}>
-                                        <Link to={'/creative-director/' + value.id} >
-                                            <img src={value.thumbnail.url} alt={value.thumbnail.url} className={classes.square} />
-                                            <h4>{value.name}</h4>
-                                            {/* <p>{value.description}</p> */}
-                                        </Link>
-                                    </div>
-                                )))
-                            }
-                        </div>
-                    </div>
+                    <ProjectNavBar />
                 </>
             ) : <Loading />
             }

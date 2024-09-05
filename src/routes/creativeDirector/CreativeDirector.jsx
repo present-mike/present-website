@@ -8,6 +8,7 @@ import Loading from '../../components/loading/Loading'
 import classes from './creativeDirector.module.css'
 import mutedImage from '../../assets/mute.svg'
 import notMutedImage from '../../assets/unmute.svg'
+import ProjectNavBar from '../../components/projectNavBar/ProjectNavBar'
 
 export default function CreativeDirector() {
     const { id } = useParams();
@@ -59,7 +60,7 @@ export default function CreativeDirector() {
                                     <h3 className={classes.mediumWeight}>{content.name}</h3>
                                     <div>
                                         <h6>Role</h6>
-                                        <p>Creative Director</p>
+                                        <p>Experience Director</p>
                                     </div>
                                 </div>
                                 <div>
@@ -76,6 +77,8 @@ export default function CreativeDirector() {
                             </div>
                         </div>
                     </div>
+                    <hr />
+                    <ProjectNavBar />
                 </>
             ) : <Loading />}
         </>

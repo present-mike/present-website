@@ -15,25 +15,14 @@ MosaicItem.propTypes = {
 export default function MosaicItem({ item }) {
     const path = getProjectType(item)
     const overlay = useRef()
-    const gsapName = item.name.replace(/[^A-Z0-9]/ig, "") + Math.ceil(Math.random() * 10)
     const isTabletUp = useMediaQuery({ query: '(min-width: 768px)' })
 
-    useGSAP(() => {
-        let ctx = gsap.context(() => {
-            gsap.set(overlay.current, { opacity: 0 });
-        });
-
-        return () => ctx.revert();
-    }, { scope: overlay })
-
-    const onMouseEnter = ({ currentTarget }) => {
-        let q = gsap.utils.selector(currentTarget);
-        gsap.to(q(`.${gsapName}`), { opacity: 1, duration: 1 });
+    const onMouseEnter = () => {
+        gsap.to(overlay.current, { opacity: 1 });
     };
 
-    const onMouseLeave = ({ currentTarget }) => {
-        let q = gsap.utils.selector(currentTarget);
-        gsap.to(q(`.${gsapName}`), { opacity: 0 });
+    const onMouseLeave = () => {
+        gsap.to(overlay.current, { opacity: 0 });
     };
 
 
@@ -47,7 +36,7 @@ export default function MosaicItem({ item }) {
                     <img src={item.thumbnail.url} alt={item.name} className={classes.mosaicImg} />
                 </Link>
                 {isTabletUp ? (
-                    <div ref={overlay} className={`${gsapName} ${classes.mosaicHover}`}>
+                    <div ref={overlay} className={`${classes.mosaicHover}`}>
                         <h4>{item.name}</h4>
                     </div>
                 ) : null}
