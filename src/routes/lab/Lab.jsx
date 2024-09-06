@@ -50,10 +50,7 @@ export default function Lab() {
                     </div>
                     <hr />
                     <div className="section">
-                        <div className={classes.subtitleContainer}>
-                            <h3>Our Drive</h3>
-                            <p className={classes.subtitle}>{content.HeadlineSubtitle}</p>
-                        </div>
+                        <h3 className={classes.subtitle}>{content.HeadlineSubtitle}</h3>
                     </div>
                     <div className='galleryContainer'>
                         <div className='imgBox'>

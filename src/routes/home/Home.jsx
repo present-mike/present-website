@@ -162,7 +162,7 @@ export default function Home() {
                     <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
-                            <DotList list={content.landing.JustificationList[0]} />
+                            <DotList list={content.landing.JustificationList[0]} imgList={content.about.ContentImageList[0]} />
                         </div>
                     </div>
                     <div className={classes.spacer} />

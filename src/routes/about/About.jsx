@@ -17,29 +17,6 @@ export default function About() {
             .catch(error => console.error(error));
     }, []);
 
-    // function addListener() {
-    //     window.scrollTo(0, 0)
-    //     document.getElementById('sendEmail').addEventListener('click', function (event) {
-    //         event.preventDefault();
-    //         const emailTo = 'here@nowpresent.co';
-    //         let first = document.getElementById('firstName').value;
-    //         let last = document.getElementById('firstName').value;
-    //         let company = document.getElementById('company').value;
-    //         let phone = document.getElementById('phone').value;
-    //         const emailSubject = 'Reaching Out'
-    //         const emailBody = document.getElementById('message').value;
-
-    //         // Create the mailto link
-    //         const body = "It's " + first + " " + last + " from " + company + ", " + phone + " \n\n" + emailBody
-    //         const mailtoLink = `mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`;
-
-    //         console.log(body)
-    //         const hiddenMailto = document.getElementById('hiddenMailto');
-    //         hiddenMailto.href = mailtoLink;
-    //         hiddenMailto.click();
-    //     });
-    // }
-
     return (
         <>
             <Header />
@@ -55,30 +32,11 @@ export default function About() {
                     <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
-                            <DotList list={content.ContentList[0]} />
+                            <DotList list={content.ContentList[0]} imgList={content.ContentImageList[0]} />
                         </div>
                     </div>
                 </>
             ) : <Loading />}
-            {/* <hr /> */}
-            {/* <div className={`section ${classes.contactContainer}`}>
-                <div>
-                    <h3>Let&apos;s Create Together</h3>
-                    <h4>here@nowpresent.co</h4>
-                </div>
-                <hr />
-                <form className={classes.contactGrid} id="emailForm">
-                    <h4 className={classes.fullCol}>contact form</h4>
-                    <input type="text" placeholder="First Name*" required id="firstName"></input>
-                    <input type="text" placeholder="Last Name*" required id="lastName"></input>
-                    <input type="text" placeholder="Email*" required id="email"></input>
-                    <input type="tel" placeholder="Phone Number" id="phone"></input>
-                    <input type="text" placeholder="Company Name*" className={classes.fullCol} required id="company"></input>
-                    <input type="text" placeholder="Message" className={`${classes.fullCol} ${classes.tallRow}`} id="message"></input>
-                    <button className={classes.fullCol} type="button" id="sendEmail">Submit</button>
-                </form>
-                <a id="hiddenMailto" style={{ display: "none" }} target="_blank"></a>
-            </div> */}
         </>
     )
 }
