@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
+import Error404 from "./components/Error404"
 import Home from './routes/home/Home'
 import About from './routes/about/About'
 import Lab from './routes/lab/Lab'
@@ -27,6 +28,7 @@ export default function App() {
           <>
             <BrowserRouter history={history}>
               <Routes>
+                <Route path='*' element={<Error404 />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/lab" element={<Lab />} />

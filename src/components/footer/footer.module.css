@@ -53,7 +53,7 @@ input {
 }
 
 .blur {
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
 }
 

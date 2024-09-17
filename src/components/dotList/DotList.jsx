@@ -11,7 +11,7 @@ export default function DotList({ list, imgList, showImages }) {
     return (
         <div className={classes.space}>
             <div className={`headerContainer`}>
-                <h2 className='heroHeader'>We Believe:</h2>
+                <h3 className='heroHeader' style={{fontWeight: '500'}}>We Believe:</h3>
             </div>
             <div className={classes.listContainer}>
                 {showImages ? (
@@ -50,6 +50,6 @@ export default function DotList({ list, imgList, showImages }) {
                     </>
                 )}
             </div>
-        </div>
+        </div >
     )
 }

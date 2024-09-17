@@ -168,7 +168,7 @@ export default function Home() {
                     <hr />
                     <div className='wSection'>
                         <div className={classes.labHeader}>
-                            <h3>{content.landing.InnovationLabDescription}</h3>
+                            <h3 style={{ fontWeight: '500' }}>{content.landing.InnovationLabDescription}</h3>
                             <Link to="/lab">
                                 <div className='linkContainer'>
                                     <h4>Read More</h4>
