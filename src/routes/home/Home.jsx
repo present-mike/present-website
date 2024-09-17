@@ -42,6 +42,8 @@ export default function Home() {
             .catch(error => console.error(error));
     }, []);
 
+    useEffect(() => console.log(content))
+
     function toProjects() {
         if (location.hash) {
             lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
@@ -91,31 +93,31 @@ export default function Home() {
                 },
             });
 
+            gsap.fromTo('.landing-head',
+                {
+                    opacity: 0,
+                },
+                {
+                    scrollTrigger: '.landing-head', // start the animation when ".box" enters the viewport (once)
+                    ease: 'sine.out',
+                    opacity: 1,
+                    duration: 1,
+                    scrub: 1
+                });
+
+            gsap.fromTo('.entire-nav',
+                {
+                    opacity: 0,
+                },
+                {
+                    opacity: 1,
+                    duration: 1,
+                    scrub: 1
+                });
+
             animationSet = true;
         }
     }
-
-    gsap.fromTo('.landing-head',
-        {
-            opacity: 0,
-        },
-        {
-            scrollTrigger: '.landing-head', // start the animation when ".box" enters the viewport (once)
-            ease: 'sine.out',
-            opacity: 1,
-            duration: 1,
-            scrub: 1
-        });
-
-    gsap.fromTo('.entire-nav',
-        {
-            opacity: 0,
-        },
-        {
-            opacity: 1,
-            duration: 1,
-            scrub: 1
-        });
 
     return (
         <>
@@ -152,20 +154,18 @@ export default function Home() {
                             ) : null
                         }
                     </div>
-                    <div className={classes.spacer} />
+                    <hr />
                     <div className="section">
                         <div className='headerContainer'>
                             <h2 className='heroHeader'>{content.about.Headline}</h2>
-                            {/* <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} /> */}
+                            {content.about.DisplayHeadImage && <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} />}
                         </div>
                     </div>
                     <hr />
                     <div className="section">
-                        <div className={classes.listContainer}>
-                            <DotList list={content.landing.JustificationList[0]} imgList={content.about.ContentImageList[0]} />
-                        </div>
+                        <DotList list={content.landing.JustificationList[0]} imgList={content.about.ContentImageList[0]} showImages={content.about.DisplayImages} />
                     </div>
-                    <div className={classes.spacer} />
+                    <hr />
                     <div className='wSection'>
                         <div className={classes.labHeader}>
                             <h3>{content.landing.InnovationLabDescription}</h3>

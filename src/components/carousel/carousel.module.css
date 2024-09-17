@@ -1,7 +1,7 @@
 .carouselContainer {
     overflow: hidden;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: relative;
 }
 
@@ -9,6 +9,7 @@
     display: flex;
     width: fit-content;
     overflow-x: scroll;
+    height: 100%;
     animation: scroll 20s linear infinite;
 }
 

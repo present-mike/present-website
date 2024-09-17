@@ -32,7 +32,7 @@ export default function About() {
                     <hr />
                     <div className="section">
                         <div className={classes.listContainer}>
-                            <DotList list={content.ContentList[0]} imgList={content.ContentImageList[0]} />
+                            <DotList list={content.ContentList[0]} imgList={content.ContentImageList[0]} showImages={content.DisplayImages}/>
                         </div>
                     </div>
                 </>
