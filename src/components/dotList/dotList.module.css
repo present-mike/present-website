@@ -1,142 +1,138 @@
 .listContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.listItem {
-    box-sizing: border-box;
-}
-
-.space {
-    display: flex;
-    flex-direction: column;
-}
-
-.listSpacing {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.dotItem {
-    box-sizing: border-box;
-}
-
-.listItem img {
-    width: 100%;
-    aspect-ratio: 9/5;
-    object-fit: cover;
-}
-
-.listItem:nth-child(-n+2) {
-    border-bottom: 1px solid black;
-    padding-bottom: 2.875rem;
-}
-
-.listItem:nth-child(odd) {
-    border-right: 1px solid black;
-    padding-right: 12%;
-}
-
-.listItem:nth-child(n+3) {
-    padding-top: 2.875rem;
-}
-
-.listItem:nth-child(even) {
-    padding-left: 12%;
-}
-
-.dot {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: black;
-    margin-bottom: 2.813rem;
-}
-
-@media only screen and (min-width: 300px) {
-
-    .listSpacing {
-        gap: 1rem;
-    }
-
-    .listItem:nth-child(-n+2) {
-        border-bottom: 1px solid black;
-        padding-bottom: 1.5rem;
-    }
-
-    .listItem:nth-child(n+3) {
-        padding-top: 1.5rem;
-    }
-
-    .dot {
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 50%;
-        background-color: black;
-        margin-bottom: 1.5rem;
-    }
-
-    .space {
-        gap: 2rem;
-        margin-top: 2rem;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 @media only screen and (min-width: 768px) {
-    .space {
-        margin-top: 1rem;
-    }
-
-    .listSpacing {
-        gap: 2.5rem;
-    }
-
-    .listItem:nth-child(-n+2) {
-        border-bottom: 1px solid black;
-        padding-bottom: 2.5rem;
-    }
-
-    .listItem:nth-child(n+3) {
-        padding-top: 2.5rem;
-    }
-
-    .dot {
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        background-color: black;
-        margin-bottom: 2.5rem;
-    }
-
-    .listContainer h3 {
-        font-size: 1.75rem;
-    }
+  .listContainer h3 {
+    font-size: 1.75rem;
+  }
 }
-
 @media only screen and (min-width: 992px) {
-    .space {
-        margin-top: 0rem;
-        gap: 3rem;
-    }
-
-    .listItem:nth-child(-n+2) {
-        padding-bottom: 2.875rem;
-    }
-
-    .listItem:nth-child(n+3) {
-        padding-top: 2.875rem;
-    }
-
-    .dot {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background-color: black;
-        margin-bottom: 2.813rem;
-    }
-
-    .listContainer h3 {
-        font-size: 2.125rem;
-    }
+  .listContainer h3 {
+    margin-top: 2.125rem;
+  }
 }
+
+.listItem {
+  box-sizing: border-box;
+}
+
+.space {
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 300px) {
+  .space {
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .space {
+    margin-top: 1rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .space {
+    margin-top: 0rem;
+    gap: 3rem;
+  }
+}
+
+.listSpacing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 300px) {
+  .listSpacing {
+    gap: 1rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .listSpacing {
+    gap: 2.5rem;
+  }
+}
+
+.dotItem {
+  box-sizing: border-box;
+}
+
+.listItem img {
+  width: 100%;
+  aspect-ratio: 9/5;
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 300px) {
+  .listItem:nth-child(-n+2) {
+    border-bottom: 1px solid black;
+    padding-bottom: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .listItem:nth-child(-n+2) {
+    border-bottom: 1px solid black;
+    padding-bottom: 2.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .listItem:nth-child(-n+2) {
+    padding-bottom: 2.875rem;
+  }
+}
+
+@media only screen and (min-width: 300px) {
+  .listItem:nth-child(n+3) {
+    padding-top: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .listItem:nth-child(n+3) {
+    padding-top: 2.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .listItem:nth-child(n+3) {
+    padding-top: 2.875rem;
+  }
+}
+
+.listItem:nth-child(odd) {
+  border-right: 1px solid black;
+  padding-right: 12%;
+}
+
+.listItem:nth-child(even) {
+  padding-left: 12%;
+}
+
+.dot {
+  border-radius: 50%;
+  background-color: black;
+}
+@media only screen and (min-width: 300px) {
+  .dot {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .dot {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 2.813rem;
+  }
+}
+
+/*# sourceMappingURL=dotList.module.css.map */
