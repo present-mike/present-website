@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import classes from './mosaicItem.module.css'
@@ -15,7 +14,6 @@ MosaicItem.propTypes = {
 export default function MosaicItem({ item }) {
     const path = getProjectType(item)
     const overlay = useRef()
-    const isTabletUp = useMediaQuery({ query: '(min-width: 768px)' })
 
     const onMouseEnter = () => {
         gsap.to(overlay.current, { opacity: 1 });
@@ -25,6 +23,21 @@ export default function MosaicItem({ item }) {
         gsap.to(overlay.current, { opacity: 0 });
     };
 
+    function onoff(e) {
+        if (e.matches) {
+            onMouseLeave()
+            console.log('small')
+        } else {
+            onMouseEnter()
+            console.log('big')
+        }
+    }
+
+    const isTabletUp = window.matchMedia('(min-width: 768px)')
+    onoff(isTabletUp)
+    isTabletUp.addEventListener("change", function () {
+        onoff(isTabletUp);
+    });
 
     return (
         <div className={classes.mosaicItem}>
@@ -41,9 +54,6 @@ export default function MosaicItem({ item }) {
                     </div>
                 ) : null}
             </div>
-            {!isTabletUp ? (
-                <h4 style={{ color: 'black', marginTop: '0.5rem' }}>{item.name}</h4>
-            ) : null}
         </div>
     )
 }
