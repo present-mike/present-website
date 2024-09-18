@@ -29,8 +29,6 @@ export default function Home() {
     const scrollDivRef = useRef(null);
     const animationRef = useRef(null);
 
-    let animationSet = false
-
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/landing')
             .then(response => response.json())
@@ -40,9 +38,7 @@ export default function Home() {
                 setProjects(shuffleArray(data.creativeDirectors.docs.concat(data.caseStudies.docs)), () => toProjects())
             })
             .catch(error => console.error(error));
-    }, []);
-
-    useEffect(() => console.log(content))
+    }, [setContent, setProjects]);
 
     function toProjects() {
         if (location.hash) {
@@ -60,7 +56,7 @@ export default function Home() {
     }
 
     function addAnimation() {
-        if (!animationSet) {
+        if (animationRef.current.children.length === 0) {
             // Load the Lottie animation
             const lottieAnimation = lottie.loadAnimation({
                 container: animationRef.current, // the DOM element to render the animation
@@ -114,8 +110,6 @@ export default function Home() {
                     duration: 1,
                     scrub: 1
                 });
-
-            animationSet = true;
         }
     }
 
