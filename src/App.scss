@@ -1,0 +1,23 @@
+@use './mixin.scss' as m;
+
+#root {
+  max-width: 1440px;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+
+  @include m.small {
+    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+  }
+
+  @include m.large {
+    font-size: 16px;
+  }
+}
+
+.page-container {
+  width: 100vw;
+}

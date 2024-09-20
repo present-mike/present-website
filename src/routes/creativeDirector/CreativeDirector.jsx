@@ -73,7 +73,7 @@ export default function CreativeDirector() {
                                 </div>
                             </div>
                             <div className={classes.subtitle}>
-                                <p style={{ textTransform: 'none' }}>{content.description}</p>
+                                <p style={{ fontSize: '1.25rem' }}>{content.description}</p>
                             </div>
                         </div>
                     </div>

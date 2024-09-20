@@ -6,7 +6,7 @@ import gsap from 'gsap'
 import lottie from 'lottie-web';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import classes from './home.module.css'
+import classes from './home.module.scss'
 import HeroSection from "../../shaders/HeroSection"
 import AlternateRows from '../../components/alternateRows/AlternateRows'
 import Carousel from '../../components/carousel/Carousel'
@@ -131,7 +131,7 @@ export default function Home() {
                             </div>
                             <div className={`${classes.atLeastScreenHeightContainer} ${classes.flexCenter}`}>
                                 <div className="section">
-                                    <div className={`landing-head ${classes.headerContainer}`}>
+                                    <div className={`landing-head ${classes.headBox}`}>
                                         <h1 className={classes.heroHeader}>{content.landing.Headline}</h1>
                                         <p style={{ textTransform: 'none' }} className={classes.heroSubtitle}>{content.landing.HeadlineSubtitle}</p>
                                     </div>
@@ -140,8 +140,8 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className={classes.spacer} />
                     <div id="projects" className={`${classes.mosaic}`}>
+                        <div className='spacer' />
                         {projects ?
                             (
                                 <AlternateRows data={projects} />
@@ -151,7 +151,7 @@ export default function Home() {
                     <hr />
                     <div className="section">
                         <div className='headerContainer'>
-                            <h2 className='heroHeader'>{content.about.Headline}</h2>
+                            <h2 className={`heroHeader ${classes.statement}`}>{content.about.Headline}</h2>
                             {content.about.DisplayHeadImage && <img src={content.about.HeaderImage.url} key={content.about.HeaderImage.url} />}
                         </div>
                     </div>
@@ -162,7 +162,7 @@ export default function Home() {
                     <hr />
                     <div className='wSection'>
                         <div className={classes.labHeader}>
-                            <h3 style={{ fontWeight: '500' }}>{content.landing.InnovationLabDescription}</h3>
+                            <h3>{content.landing.InnovationLabDescription}</h3>
                             <Link to="/lab">
                                 <div className='linkContainer'>
                                     <h4>Read More</h4>

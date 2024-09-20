@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import classes from './dotList.module.css'
+import classes from './dotList.module.scss'
 
 DotList.propTypes = {
     list: PropTypes.object,
@@ -10,9 +10,7 @@ DotList.propTypes = {
 export default function DotList({ list, imgList, showImages }) {
     return (
         <div className={classes.space}>
-            <div className={`headerContainer`}>
-                <h3 className='heroHeader' style={{fontWeight: '500'}}>We Believe:</h3>
-            </div>
+            <h3 style={{transform: 'translateY(-1.25rem)'}}>We Believe:</h3>
             <div className={classes.listContainer}>
                 {showImages ? (
                     <>
@@ -41,7 +39,7 @@ export default function DotList({ list, imgList, showImages }) {
                                     return (
                                         <div key={key} className={classes.listItem}>
                                             <div className={classes.dot} />
-                                            <h3>{value}</h3>
+                                            <h3 style={{fontWeight: 400}}>{value}</h3>
                                         </div>
                                     )
                                 }

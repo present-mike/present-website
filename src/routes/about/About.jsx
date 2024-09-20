@@ -3,7 +3,7 @@ import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import DotList from '../../components/dotList/DotList'
-import classes from './about.module.css'
+import classes from './about.module.scss'
 
 export default function About() {
     const [content, setContent] = useStateWithCallbackLazy(null)

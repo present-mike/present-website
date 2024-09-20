@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 import linkArrow from '../../assets/link-arrow.svg'
-import classes from './projectNavBar.module.css'
+import classes from './projectNavBar.module.scss'
 
 ProjectNavBar.propTypes = {
     currentId: PropTypes.string,
@@ -24,7 +24,7 @@ export default function ProjectNavBar({ currentId }) {
             <div className={classes.seeMoreHeader}>
                 <Link to="/#projects">
                     <div className='arrowDiv'>
-                        <h3>View all projects</h3>
+                        <h3 className={classes.regular}>View all projects</h3>
                         <img src={linkArrow} alt="arrow" />
                     </div>
                 </Link>
@@ -46,7 +46,7 @@ export default function ProjectNavBar({ currentId }) {
 }
 
 function getUrl(project) {
-    if ( Object.hasOwn(project, 'team')) {
+    if (Object.hasOwn(project, 'team')) {
         return '/case-study/' + project.id
     }
     return '/creative-director/' + project.id

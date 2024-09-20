@@ -5,7 +5,7 @@ import { ScrollScene, UseCanvas } from '@14islands/r3f-scroll-rig';
 import { useDetectGPU } from '@react-three/drei';
 import ReactPlayer from 'react-player/lazy'
 
-import classes from '../routes/home/home.module.css';
+import classes from '../routes/home/home.module.scss';
 import FadeIn from '../components/fadeIn/FadeIn'
 
 import HeroQuad from './HeroQuad';
