@@ -1,0 +1,121 @@
+@use '../../mixin.scss' as m;
+
+.headSectionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4.125rem;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.subtitleContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 2rem;
+
+    @include m.small {
+        flex-direction: column;
+    }
+
+    @include m.medium {
+        flex-direction: row;
+    }
+}
+
+.subtitle {
+    width: 100%;
+    max-width: 42rem;
+}
+
+.subtitle h4 {
+    font-weight: 600;
+}
+
+.subtitle p {
+    font-size: 1.5rem;
+}
+
+.rightItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.688rem;
+    margin-bottom: 2.188rem;
+}
+
+.rightItem:last-child {
+    margin-bottom: 0rem;
+}
+
+.leftItem {
+    margin-bottom: 1.25rem;
+}
+
+.leftItem p {
+    color: #7B7B7B;
+    font-size: 1.25rem;
+}
+
+.caseGallery,
+.projectGallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.projectGallery {
+    margin-left: -1.125rem;
+    width: calc(100% + 2.25rem)
+}
+
+.caseGallery div {
+    box-sizing: border-box;
+}
+
+.projectGallery div {
+    flex-basis: 33.33%;
+    border-left: 1px solid black;
+    margin-bottom: 2rem;
+}
+
+.projectGallery div:first-child {
+    border-left: none;
+}
+
+.projectGallery h4 {
+    font-size: 1.25rem;
+}
+
+.caseGallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 1.125rem;
+    box-sizing: border-box;
+}
+
+.mediumWeight {
+    font-weight: 500;
+}
+
+.square {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.doubleGallery {
+    display: grid;
+    grid-column-gap: 1rem;
+
+    @include m.small {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include m.medium {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

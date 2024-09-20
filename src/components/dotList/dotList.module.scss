@@ -1,0 +1,97 @@
+@use '../../mixin.scss' as m;
+
+.listContainer {
+    @include m.small {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    @include m.medium {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0rem;
+    }
+}
+
+.listItem {
+    box-sizing: border-box;
+
+    @include m.small {
+        padding-top: 4rem;
+    }
+
+    @include m.medium {
+        padding-top: 0;
+    }
+}
+
+.listItem:nth-child(-n+2) {
+    @include m.medium {
+        padding-bottom: 2.875rem;
+        border-bottom: 1px solid black;
+    }
+}
+
+.listItem:nth-child(n+3) {
+    @include m.medium {
+        padding-top: 2.875rem;
+    }
+}
+
+.listItem:nth-child(odd) {
+    @include m.medium {
+        border-right: 1px solid black;
+        padding-right: 12%;
+    }
+}
+
+.listItem:nth-child(even) {
+    @include m.medium {
+        padding-left: 12%;
+    }
+}
+
+.listItem img {
+    width: 100%;
+    aspect-ratio: 9/5;
+    object-fit: cover;
+}
+
+.listContainer h3 {
+    max-width: 42rem;
+    margin-top: 3rem;
+    text-transform: none;
+}
+
+.space {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem 0 3rem 0;
+}
+
+.listSpacing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include m.small {
+        gap: 1rem;
+    }
+
+    @include m.medium {
+        gap: 2.5rem;
+    }
+}
+
+.dotItem {
+    box-sizing: border-box;
+}
+
+.dot {
+    border-radius: 50%;
+    background-color: black;
+    width: 1.5rem;
+    height: 1.5rem;
+}

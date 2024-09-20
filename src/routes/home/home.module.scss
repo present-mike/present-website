@@ -1,0 +1,116 @@
+@use '../../mixin.scss' as m;
+
+video {
+    object-fit: cover;
+}
+
+.heroHeader {
+    font-weight: 400;
+    color: white;
+    text-align: left;
+}
+
+.statement {
+    font-size: 3.5rem;
+}
+
+.heroSubtitle {
+    font-family: neue-haas-unica, sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: white;
+
+    @include m.medium {
+        max-width: 80%;
+    }
+}
+
+.arrowImage {
+    width: auto;
+    padding: 5.125rem;
+    height: 3.875rem;
+}
+
+.screenHeightContainer {
+    width: 100%;
+    height: 200vh;
+}
+
+.atLeastScreenHeightContainer {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+.stickyContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.noTouch {
+    pointer-events: none;
+}
+
+.dataMoshContainer {
+    position: relative;
+}
+
+.flexDown {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.flexCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.labHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 3rem 0;
+    max-width: 60em;
+}
+
+.headBox {
+    margin: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 61.875rem;
+    gap: 2.25rem;
+
+}
+
+.logo {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    z-index: 2;
+
+    @include m.small {
+        padding: 4rem 2rem;
+    }
+
+    @include m.medium {
+        padding: 10.25rem 4rem;
+    }
+}
+
+.arrow {
+    width: auto;
+    height: 1.25rem;
+}

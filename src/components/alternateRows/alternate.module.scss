@@ -1,0 +1,44 @@
+@use '../../mixin.scss' as m;
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: '100%';
+    padding: 0 1rem;
+
+    @include m.small {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    @include m.medium {
+        flex-direction: row;
+        border-bottom: 1px solid black;
+    }
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row:nth-child(even) {
+    @include m.medium {
+        height: 33rem;
+    }
+}
+
+.row:nth-child(odd) {
+    @include m.medium {
+        height: 28rem;
+    }
+}
+
+.rowContainer {
+    @include m.small {
+        padding: 2rem 0;
+    }
+
+    @include m.medium {
+        padding: 0;
+    }
+}

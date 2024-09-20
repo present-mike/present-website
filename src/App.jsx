@@ -5,7 +5,7 @@ import { Router, Route, Routes } from "react-router-dom"
 import { createBrowserHistory } from "history"
 import Footer from './components/footer/Footer'
 import ScrollToTop from './components/ScrollToTop'
-import './App.css'
+import './App.scss'
 
 import Error404 from "./components/Error404"
 import Home from './routes/home/Home'

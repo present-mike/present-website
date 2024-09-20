@@ -1,0 +1,128 @@
+@use '../../mixin.scss' as m;
+
+a {
+    color: black;
+    margin: 0;
+}
+
+.label {
+    font-family: neue-haas-unica, sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.bolded {
+    font-weight: 500;
+}
+
+.blur {
+    background-color: rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+}
+
+.spacer {
+    height: 4.375rem;
+    width: 100%;
+    background-color: white;
+}
+
+.linkContainer {
+    display: flex;
+    z-index: 999;
+
+    @include m.small {
+        flex-direction: column;
+    }
+
+    @include m.large {
+        flex-direction: row;
+    }
+}
+
+.linkItem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    padding: 4.25rem 3.75rem;
+    gap: 1.5rem;
+
+    @include m.small {
+        border-bottom: 1px solid black;
+        border-right: none;
+    }
+
+    @include m.large {
+        border-right: 1px solid black;
+        border-bottom: none;
+    }
+}
+
+.linkItem:last-child {
+    flex: 2;
+    border-right: none;
+    border-bottom: none;
+}
+
+.subItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.logoContainer {
+    margin: 0;
+    padding: 1.875rem 3.75rem 0 3.75rem;
+}
+
+.logo {
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    transform: translateY(2px);
+}
+
+.logoSubtitle {
+    text-transform: uppercase;
+    font-family: neue-haas-unica, sans-serif;
+    font-size: 0.875rem;
+    color: #595959;
+    margin-bottom: 0.5rem;
+}
+
+//Canvas Stuff
+
+.screenHeightContainer {
+    width: 100%;
+    height: 100vh;
+}
+
+.stickyContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.noTouch {
+    pointer-events: none;
+}
+
+.footerWrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.quadRef {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}

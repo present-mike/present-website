@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { UseCanvas, ScrollScene } from '@14islands/r3f-scroll-rig';
 import ReactPlayer from 'react-player/lazy'
-import classes from './footer.module.css'
+import classes from './footer.module.scss'
 import HeroQuad from '../../shaders/HeroQuad';
 import logo from '../../assets/dark-logo.svg'
 
@@ -60,31 +60,32 @@ export default function Footer() {
                     content && (
                         <div className={`${classes.linkContainer} ${classes.blur}`}>
                             <div className={classes.linkItem}>
-                                <h4>Contact Us</h4>
+                                <h4 className={`${classes.label} ${classes.bolded}`}>Contact Us</h4>
                                 <div className={classes.subItem}>
                                     {Object.entries(content.contact).map(([key, value]) =>
                                         <div key={key}>
                                             {value.link.url != "NA" ?
-                                                <a href={value.link.url}>{value.link.label}</a>
-                                                : <p className={classes.linkp}>{value.link.label}</p>
+                                                <a className={classes.label} href={value.link.url}>{value.link.label}</a>
+                                                : <p className={classes.label}>{value.link.label}</p>
                                             }
                                         </div>
                                     )}
-                                    <h4>{content.phone}</h4>
+                                    <h4 className={classes.label}>{content.phone}</h4>
                                 </div>
                             </div>
-                            <div className={classes.linkItem} />
-                            {isLaptopUp && (
-                                <div className={classes.linkItem} />
-                            )}
                             <div className={classes.linkItem}>
-                                <h4>Connect with Us</h4>
+                                <h4 className={`${classes.label} ${classes.bolded}`}>Connect with Us</h4>
                                 <div className={classes.subItem}>
                                     {Object.entries(content.connect).map(([key, value]) => (
-                                        <a key={key} href={value.link.url}>{value.link.label}</a>
+                                        <a key={key} href={value.link.url} className={classes.label}>{value.link.label}</a>
                                     ))}
                                 </div>
                             </div>
+                            {isLaptopUp && (
+                                <>
+                                    <div className={classes.linkItem} />
+                                </>
+                            )}
                         </div>
                     )
                 }

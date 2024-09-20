@@ -4,7 +4,7 @@ import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import ReactPlayer from 'react-player/lazy'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
-import classes from './caseStudy.module.css'
+import classes from './caseStudy.module.scss'
 import mutedImage from '../../assets/mute.svg'
 import notMutedImage from '../../assets/unmute.svg'
 import ProjectNavBar from '../../components/projectNavBar/ProjectNavBar'
