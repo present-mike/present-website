@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import classes from './alternate.module.css'
+import classes from './alternate.module.scss'
 import MosaicItem from '../mosaicItem/MosaicItem'
 
 AlternateRows.propTypes = {
@@ -22,7 +22,7 @@ export default function AlternateRows ({ data }) {
   const rows = chunkItems(data);
 
   return (
-    <>
+    <div className={classes.rowContainer}>
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className={classes.row}>
           {row.map((item) => (
@@ -30,7 +30,7 @@ export default function AlternateRows ({ data }) {
           ))}
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

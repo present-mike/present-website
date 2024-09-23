@@ -2,6 +2,7 @@ $sm: 300px;
 $msm: 375px;
 $md: 768px;
 $lg: 992px;
+$hu: 1200px;
 
 @mixin small {
     @media only screen and (min-width: $sm) {
@@ -23,6 +24,12 @@ $lg: 992px;
 
 @mixin large {
     @media only screen and (min-width: $lg) {
+        @content;
+    }
+}
+
+@mixin huge {
+    @media only screen and (min-width: $hu) {
         @content;
     }
 }

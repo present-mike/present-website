@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
-import classes from './mosaicItem.module.css'
+import classes from './mosaicItem.module.scss'
 import PropTypes from 'prop-types'
 
 gsap.registerPlugin(useGSAP);
@@ -26,10 +26,8 @@ export default function MosaicItem({ item }) {
     function onoff(e) {
         if (e.matches) {
             onMouseLeave()
-            console.log('small')
         } else {
             onMouseEnter()
-            console.log('big')
         }
     }
 
@@ -45,12 +43,12 @@ export default function MosaicItem({ item }) {
                 onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
                 style={{ position: 'relative', width: '100%', height: '100%' }}
             >
-                <Link to={`/${path}/` + item.id} style={{ width: 'fit-content', height: 'fit-content' }}>
+                <Link to={`/${path}/` + item.id}>
                     <img src={item.thumbnail.url} alt={item.name} className={classes.mosaicImg} />
                 </Link>
                 {isTabletUp ? (
                     <div ref={overlay} className={`${classes.mosaicHover}`}>
-                        <h4>{item.name}</h4>
+                        <h5>{item.name}</h5>
                     </div>
                 ) : null}
             </div>
