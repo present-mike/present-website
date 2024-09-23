@@ -29,6 +29,7 @@ a {
 .linkContainer {
     display: flex;
     z-index: 999;
+    border-top: 1px solid black;
 
     @include m.small {
         flex-direction: column;
@@ -72,6 +73,7 @@ a {
 
 .logoContainer {
     margin: 0;
+    border-top: 1px solid black;
     padding: 1.875rem 3.75rem 0 3.75rem;
 }
 
