@@ -55,7 +55,6 @@ export default function Footer() {
                         }
                     </>
                 ) : null}
-                <hr />
                 {
                     content && (
                         <div className={`${classes.linkContainer} ${classes.blur}`}>
@@ -88,7 +87,6 @@ export default function Footer() {
                         </div>
                     )
                 }
-                <hr />
                 <div className={`${classes.logoContainer} ${classes.blur}`}>
                     <p className={classes.logoSubtitle}>@ 2024 present</p>
                     <img className={classes.logo} src={logo} alt="logo" />
