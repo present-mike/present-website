@@ -46,6 +46,7 @@ export default function CaseStudy() {
                                     muted={muted}
                                     onClick={() => setMuted(prev => !prev)}
                                     volume={1}
+                                    playsinline
                                 />
                                 <div style={{ position: 'absolute', bottom: '2rem', left: '1.5rem', width: '2rem', height: '2rem', pointerEvents: 'none' }}>
                                     {muted ? <img src={mutedImage} alt="muted" /> : <img src={notMutedImage} alt="not muted" />}

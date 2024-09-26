@@ -39,6 +39,7 @@ export default function CreativeDirector() {
                     <div className="section">
                         <div style={{ position: 'relative' }}>
                             <ReactPlayer
+                                playsinline
                                 playing
                                 loop
                                 muted={muted}
