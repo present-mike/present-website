@@ -58,16 +58,12 @@ export default function CaseStudy() {
                             <div>
                                 <h3 className={`${classes.leftItem} ${classes.mediumWeight}`} >{content.name}</h3>
                                 <div className={classes.leftItem}>
-                                    <h5>What we did do</h5>
+                                    <h5>What we did</h5>
                                     <p>{content.roles[0].role}</p>
                                 </div>
                                 <div className={classes.leftItem}>
-                                    <h5>Industry</h5>
+                                    <h5>Category</h5>
                                     <p>{content.industry}</p>
-                                </div>
-                                <div className={classes.leftItem}>
-                                    <h5>Team</h5>
-                                    <p>{content.team[0].teamMember}</p>
                                 </div>
                             </div>
                             <div className={classes.subtitle}>

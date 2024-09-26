@@ -66,6 +66,14 @@ video {
 .flexDown {
     display: flex;
     flex-direction: column-reverse;
+
+    @include m.small {
+        justify-content: center;
+    }
+
+    @include m.medium {
+        justify-content: end;
+    }
 }
 
 .flexCenter {

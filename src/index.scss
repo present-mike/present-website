@@ -30,6 +30,16 @@ h1 {
     line-height: 110%;
     font-weight: 500;
     margin: 0;
+
+    @include m.small {
+        font-size: 3rem;
+    }
+    @include m.medium-small {
+        font-size: 3.5rem;
+    }
+    @include m.medium {
+        font-size: 4.688rem;
+    }
 }
 
 h2 {

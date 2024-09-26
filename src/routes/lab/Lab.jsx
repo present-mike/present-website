@@ -29,7 +29,10 @@ export default function Lab() {
                     <div className='spacer' />
                     <div className="section">
                         <div className='headerContainer'>
-                            <h2 className='heroHeader'>{content.Headline}</h2>
+                            <div style={{ display: 'flex', flexDirection: 'column', rowGap: "4rem" }}>
+                                <h2 className='heroHeader'>{content.Headline}</h2>
+                                <h3 className={classes.subtitle}>{content.HeadlineSubtitle}</h3>
+                            </div>
                             <div style={{ position: 'relative' }}>
                                 <ReactPlayer
                                     playing
@@ -49,10 +52,8 @@ export default function Lab() {
                         </div>
                     </div>
                     <hr />
-                    <div className="section">
-                        <h3 className={classes.subtitle}>{content.HeadlineSubtitle}</h3>
-                    </div>
-                    <div className='galleryContainer'>
+                    <div className="spacer" style={{ borderColor: 'rgba(0,0,0,0)' }} />
+                    <div className={`galleryContainer`}>
                         <div className='imgBox'>
                             <Carousel images={content.gallery} />
                         </div>
