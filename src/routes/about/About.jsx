@@ -22,7 +22,7 @@ export default function About() {
             <Header />
             {content ? (
                 <>
-                    <div className='spacer' />
+                    <div className='spacer' style={{ borderBottom: 0 }} />
                     <div className="section">
                         <div className='headerContainer'>
                             <h2 className='heroHeader'>{content.Headline}</h2>

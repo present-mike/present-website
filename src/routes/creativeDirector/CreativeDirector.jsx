@@ -35,7 +35,7 @@ export default function CreativeDirector() {
             <Header />
             {content ? (
                 <>
-                    <div className='spacer' />
+                    <div className='spacer' style={{ borderBottom: 0 }} />
                     <div className="section">
                         <div style={{ position: 'relative' }}>
                             <ReactPlayer

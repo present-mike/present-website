@@ -28,7 +28,7 @@ export default function CaseStudy() {
             <Header />
             {content ? (
                 <>
-                    <div className='spacer' />
+                    <div className='spacer' style={{ borderBottom: 0 }} />
                     <div className="section">
                         <div className={classes.headSectionContainer}>
                             <div className={classes.headerContainer}>

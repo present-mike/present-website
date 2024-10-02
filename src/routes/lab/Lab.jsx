@@ -28,7 +28,7 @@ export default function Lab() {
             <Header />
             {content ? (
                 <>
-                    <div className='spacer' />
+                    <div className='spacer' style={{ borderBottom: 0 }}/>
                     <div className="section">
                         <div className='headerContainer'>
                             <div style={{ display: 'flex', flexDirection: 'column', rowGap: "4rem" }}>
