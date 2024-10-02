@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     width: '100%';
-    padding: 0 1rem;
 
     @include m.small {
         flex-direction: column;
@@ -12,6 +11,7 @@
     }
 
     @include m.medium {
+        padding: 0 1rem;
         flex-direction: row;
         border-bottom: 1px solid black;
     }

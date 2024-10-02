@@ -123,13 +123,27 @@ body {
 .section {
     max-width: 108rem;
     margin: auto;
-    padding: 3.75rem
+
+    @include m.small {
+        padding: 2.5rem;
+    }
+
+    @include m.medium {
+        padding: 3.75rem;
+    }
 }
 
 .wSection {
     max-width: 108rem;
     margin: auto;
-    padding: 0 3.75rem;
+
+    @include m.small {
+        padding: 0 2.5rem;
+    }
+
+    @include m.medium {
+        padding: 0 3.75rem;
+    }
 }
 
 .headerContainer {

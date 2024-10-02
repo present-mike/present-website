@@ -25,10 +25,10 @@ export default function HeroSection({ src }) {
             {(GPUTier.tier === "0" || (GPUTier.isMobile && GPUTier.tier === "1") || isMobile) ?
                 <div className={`${classes.screenHeightContainer} ${classes.noTouch}`}>
                     <ReactPlayer
-                        playsinline
-                        playing
-                        loop
-                        muted
+                        playsinline={true}
+                        playing={true}
+                        loop={true}
+                        muted={true}
                         url={src}
                         key={src}
                         width='100%'
