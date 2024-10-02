@@ -28,9 +28,16 @@ export default function HeroSection({ src }) {
                         playsinline
                         playing
                         loop
-                        muted
+                        muted={true}
                         autoPlay
-                        data-autoplay=''
+                        config={{
+                            file: {
+                                attributes: {
+                                    autoPlay: true,
+                                    muted: true
+                                }
+                            }
+                        }}
                         volume={0}
                         url={src}
                         key={src}
