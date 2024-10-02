@@ -29,17 +29,18 @@ ul {
     vertical-align: baseline;
     margin: 0;
     display: flex;
-    gap: 2.5rem;
     padding: 0;
 
     @include m.small {
         margin-bottom: 2rem;
         flex-direction: column;
+        gap: 1rem;
     }
 
     @include m.medium {
         flex-direction: row;
         margin-bottom: 0;
+        gap: 2.5rem;
     }
 }
 
@@ -49,6 +50,14 @@ a p {
     font-weight: 500;
     font-size: 1.25rem;
     font-style: italic;
+
+    @include m.small {
+        font-size: 2rem
+    }
+
+    @include m.medium {
+        font-size: 1.25rem
+    }
 }
 
 .cleanButton {
