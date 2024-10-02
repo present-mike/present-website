@@ -30,13 +30,15 @@ export default function Footer() {
                     <>
                         {isMobile ? (
                             <div className={`${classes.stickyContainer}`}>
-                                <div className={`${classes.screenHeightContainer} ${classes.sticky} ${classes.noTouch}`}>
+                                <div className={`${classes.screenHeightContainer} ${classes.sticky}`}>
                                     <ReactPlayer
                                         playing
                                         loop
                                         muted
                                         url={content.SourceReel.url}
                                         key={content.SourceReel.url}
+                                        className={classes.noTouch}
+                                        onClick={(e) => e.preventDefault()}
                                         width="100%"
                                         height="100%"
                                     />

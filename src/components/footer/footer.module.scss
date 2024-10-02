@@ -114,6 +114,7 @@ a {
 
 .noTouch {
     pointer-events: none;
+    touch-action: none;
 }
 
 .footerWrapper {
