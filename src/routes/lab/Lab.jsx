@@ -5,11 +5,13 @@ import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import Carousel from '../../components/carousel/Carousel'
 import classes from './lab.module.scss'
-import mutedImage from '../../assets/mute.svg'
-import notMutedImage from '../../assets/unmute.svg'
+// import mutedImage from '../../assets/mute.svg'
+// import notMutedImage from '../../assets/unmute.svg'
+import playImage from '../../assets/play.svg'
+import pauseImage from '../../assets/pause.svg'
 
 export default function Lab() {
-    const [muted, setMuted] = useState(true)
+    const [playing, setPlaying] = useState(false)
     const [content, setContent] = useStateWithCallbackLazy(null)
 
     useEffect(() => {
@@ -35,18 +37,18 @@ export default function Lab() {
                             </div>
                             <div style={{ position: 'relative' }}>
                                 <ReactPlayer
-                                    playing
+                                    playing={playing}
                                     loop
                                     url={content.Reel.url}
                                     key={content.Reel.url}
                                     width="100%"
                                     height="100%"
-                                    muted={muted}
-                                    onClick={() => setMuted(prev => !prev)}
+                                    muted={true}
+                                    onClick={() => setPlaying(prev => !prev)}
                                     volume={1}
                                 />
-                                <div style={{ position: 'absolute', bottom: '2rem', left: '1.5rem', width: '2rem', height: '2rem', pointerEvents: 'none' }}>
-                                    {muted ? <img src={mutedImage} alt="muted" /> : <img src={notMutedImage} alt="not muted" />}
+                                <div style={{ position: 'absolute', bottom: '2rem', left: '1.5rem', width: '4rem', height: '4rem', pointerEvents: 'none' }}>
+                                    {playing ? <img src={pauseImage} alt="muted" style={{ width: '100%', height: 'auto' }} /> : <img src={playImage} alt="not muted" style={{ width: '100%', height: 'auto' }} />}
                                 </div>
                             </div>
                         </div>

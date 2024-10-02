@@ -3,14 +3,14 @@
 .stickyHeader {
     position: fixed;
     width: 100%;
-    background-color: rgb(255, 255, 255, 0.975);
+    background-color: rgba(255, 255, 255, 0.975);
     top: 0;
     z-index: 99;
 }
 
 .navSpacing {
     width: 100%;
-    padding: 3rem 0;
+    padding: 2rem 0;
 }
 
 .navContainer {
@@ -21,6 +21,7 @@
 
 .headLogo {
     width: auto;
+    height: 1.5rem;
 }
 
 ul {
@@ -28,13 +29,16 @@ ul {
     vertical-align: baseline;
     margin: 0;
     display: flex;
-    gap: 2.25rem;
+    gap: 2.5rem;
+    padding: 0;
 
     @include m.small {
         margin-bottom: 2rem;
+        flex-direction: column;
     }
 
     @include m.medium {
+        flex-direction: row;
         margin-bottom: 0;
     }
 }
@@ -44,6 +48,7 @@ a p {
     text-transform: capitalize;
     font-weight: 500;
     font-size: 1.25rem;
+    font-style: italic;
 }
 
 .cleanButton {
@@ -60,63 +65,7 @@ a p {
     background-color: white;
 }
 
-@media only screen and (min-width: 300px) {
-    .headLogo {
-        height: 1rem;
-    }
-
-    .navSpacing {
-        padding: 1rem 0;
-    }
-
-    p {
-        font-size: 0.5rem;
-    }
-
-    ul {
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 0;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .headLogo {
-        height: 1.5rem;
-    }
-
-    .navSpacing {
-        padding: 2rem 0;
-    }
-
-    p {
-        font-size: 0.75rem;
-    }
-
-    ul {
-        flex-direction: row;
-        gap: 2.25rem;
-        padding: 0;
-    }
-}
-
 @media only screen and (min-width: 992px) {
-    .headLogo {
-        height: 1.75rem;
-    }
-
-    .navSpacing {
-        padding: 2.25rem 0;
-    }
-
-    p {
-        font-size: 1.25rem;
-    }
-
-    ul {
-        gap: 2.5rem;
-    }
-
     .spacer {
         width: 100%;
         height: 6.25rem;
