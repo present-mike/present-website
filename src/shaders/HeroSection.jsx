@@ -29,20 +29,14 @@ export default function HeroSection({ src }) {
                         playing
                         loop
                         muted
+                        autoPlay
+                        data-autoplay=''
+                        volume={0}
                         url={src}
                         key={src}
                         width='100%'
                         height='100%'
                         style={{ maxWidth: `100vw`, maxHeight: `100vh`, position: `sticky`, top: 0 }}
-                        volume={0}
-                        config={{
-                            file: {
-                                attributes: {
-                                    autoPlay: true,
-                                    muted: true
-                                }
-                            }
-                        }}
                     />
                 </div> :
                 <>
