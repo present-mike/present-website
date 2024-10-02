@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 import linkArrow from '../../assets/link-arrow.svg'
@@ -10,6 +11,9 @@ ProjectNavBar.propTypes = {
 
 export default function ProjectNavBar({ currentId }) {
     const [projects, setProjects] = useState(null)
+    let location = useLocation()
+    const prevLocation = useRef()
+
     useEffect(() => {
         fetch('https://present-cms.payloadcms.app/api/combinedprojects')
             .then(response => response.json())
@@ -18,6 +22,13 @@ export default function ProjectNavBar({ currentId }) {
             })
             .catch(error => console.error(error));
     }, []);
+
+    useEffect(() => {
+        if (location != prevLocation.current) {
+            setProjects(shuffleArray(projects))
+        }
+        prevLocation.current = location;
+    }, [location])
 
     return (
         <div className='wSection'>
