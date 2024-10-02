@@ -1,3 +1,5 @@
+@use '../../mixin.scss' as m;
+
 .stickyHeader {
     position: fixed;
     width: 100%;
@@ -14,6 +16,7 @@
 .navContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .headLogo {
@@ -26,6 +29,14 @@ ul {
     margin: 0;
     display: flex;
     gap: 2.25rem;
+
+    @include m.small {
+        margin-bottom: 2rem;
+    }
+
+    @include m.medium {
+        margin-bottom: 0;
+    }
 }
 
 a p {

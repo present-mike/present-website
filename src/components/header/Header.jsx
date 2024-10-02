@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
-import classes from './header.module.css'
+import classes from './header.module.scss'
 import logo from '../../assets/dark-logo.svg'
 import hamburger from './hamburger.svg'
 
@@ -59,7 +59,7 @@ export default function Header() {
                     )}
                 </div>
             </div>
-            {menuOpen ? (
+            {menuOpen && !isTabletUp ? (
                 <div className="wSection">
                     {menu}
                 </div>
