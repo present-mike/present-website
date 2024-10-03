@@ -124,7 +124,7 @@ export default function Home() {
             {content ? (
                 <>
                     <div className={classes.dataMoshContainer} ref={ref}>
-                        <HeroSection src={reel} key={reel} />
+                        <HeroSection src={reel} mobile={content.landing.HeaderReelMobile.url} mobileGif={content.landing.HeaderReelMobileGif.url} key={reel} />
                         <div style={{ zIndex: 9999, position: 'absolute', bottom: 0, opacity: 1, width: '100%' }}>
                             <div ref={scrollDivRef} className={`${classes.atLeastScreenHeightContainer} ${classes.flexDown}`} style={{ opacity: 1 }}>
                                 <div style={{ width: '100%', padding: '3rem', boxSizing: 'border-box' }} ref={animationRef} />
