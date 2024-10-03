@@ -44,6 +44,7 @@ export default function HeroSection({ src, mobile, mobileGif }) {
                             volume={0}
                             url={isMobile ? mobile : src}
                             key={src}
+                            playIcon={<></>}
                             width='100%'
                             height='100%'
                             onPause={() => console.log('oops')}
