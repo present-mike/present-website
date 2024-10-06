@@ -50,6 +50,37 @@
     font-weight: 500;
 }
 
+.caseGallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.caseGallery div {
+    box-sizing: border-box;
+}
+
+.caseGallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 1.125rem;
+    box-sizing: border-box;
+}
+
+.doubleGallery {
+    display: grid;
+    grid-column-gap: 1rem;
+
+    @include m.small {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include m.medium {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 300px) {
     .subtitleContainer {
