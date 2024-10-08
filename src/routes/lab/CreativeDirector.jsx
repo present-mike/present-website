@@ -80,7 +80,7 @@ export default function CreativeDirector() {
                     <div className='section'>
                         <div className={classes.caseGallery}>
                             {Object.entries(content.gallery.slice(0, 2)).map(([key, value]) => (
-                                <div key={key}>
+                                <div key={key} style={{ width: '100%'}}>
                                     <img src={value.image.url} alt={value.image.url} />
                                 </div>
                             ))}

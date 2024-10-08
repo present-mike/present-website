@@ -58,10 +58,12 @@ export default function CaseStudy() {
                         <div className={classes.subtitleContainer}>
                             <div>
                                 <h3 className={`${classes.leftItem} ${classes.mediumWeight}`} >{content.name}</h3>
-                                <div className={classes.leftItem}>
-                                    <h5>What we did</h5>
-                                    <p>{content.roles[0].role}</p>
-                                </div>
+                                {content.roles.length > 0 &&
+                                    <div className={classes.leftItem}>
+                                        <h5>What we did</h5>
+                                        <p>{content.roles[0].role}</p>
+                                    </div>
+                                }
                                 <div className={classes.leftItem}>
                                     <h5>Category</h5>
                                     <p>{content.industry}</p>
@@ -86,7 +88,7 @@ export default function CaseStudy() {
                     <div className='section'>
                         <div className={classes.caseGallery}>
                             {Object.entries(content.gallery.slice(0, 2)).map(([key, value]) => (
-                                <div key={key}>
+                                <div key={key} style={{ width: '100%'}}>
                                     <img src={value.image.url} alt={value.image.url} />
                                 </div>
                             ))}
