@@ -35,6 +35,8 @@ export default function Footer() {
                                         playing
                                         loop
                                         muted
+                                        volume={0}
+                                        style={{ pointerEvents: "none" }}
                                         url={content.SourceReel.url}
                                         key={content.SourceReel.url}
                                         className={classes.noTouch}
