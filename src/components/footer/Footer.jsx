@@ -33,6 +33,7 @@ export default function Footer() {
                                 <div className={`${classes.screenHeightContainer} ${classes.sticky}`}>
                                     <ReactPlayer
                                         playing
+                                        playsinline
                                         loop
                                         muted
                                         volume={0}
